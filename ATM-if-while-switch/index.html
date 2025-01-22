@@ -10,12 +10,15 @@
 <body>
 
     <script>
-        /*
-        1. while-promt 
-        2. exite while option ==4
-        3. valuable for init amount
-        4. qu qian - deposit + check balance 
-        5. use swich statement for differnt options  */
+         /*
+        1. while-prompt 
+        2. exit while when option === 4
+        3. variable for initial amount
+        4. withdraw, deposit, check balance
+        5. use switch statement for different options
+        */
+        let balance = 100
+
         while (true) {
             let userInput = +prompt(`Please enter the following options: 
             1. Withdraw 
@@ -23,15 +26,29 @@
             3.Check Balcnce 
             4.Exit
             `)
-
-            let balance = 0
-            let withdrawAmount = 0
-            let depositAmount = 0
-
-            if (userInput===4) {
+            if (userInput === 4) {
                 break
             }
-            
+            else {
+                switch (userInput) {
+                    case 1: //withdraw
+                        let withdrawAmount = +prompt('Enter the amount you want to withdraw:')
+                        balance -= withdrawAmount
+                        break;
+
+                    case 2: //deposit 
+                        let depositAmount = +prompt('Enter the amount you want to withdraw:')
+                        balance += depositAmount;
+                        break;
+
+                    case 3:
+                        alert(`Your balance is: ${balance}`)
+                        break;
+
+                    default:
+                        console.log("Invalid option");
+                }
+            }
         }
 
 
