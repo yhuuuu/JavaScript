@@ -10,13 +10,13 @@
 <body>
 
     <script>
-         /*
-        1. while-prompt 
-        2. exit while when option === 4
-        3. variable for initial amount
-        4. withdraw, deposit, check balance
-        5. use switch statement for different options
-        */
+        /*
+       1. while-prompt 
+       2. exit while when option === 4
+       3. variable for initial amount
+       4. withdraw, deposit, check balance
+       5. use switch statement for different options
+       */
         let balance = 100
 
         while (true) {
@@ -33,7 +33,12 @@
                 switch (userInput) {
                     case 1: //withdraw
                         let withdrawAmount = +prompt('Enter the amount you want to withdraw:')
-                        balance -= withdrawAmount
+                        if (withdrawAmount <= balance) {
+                            balance -= withdrawAmount
+                        } else {
+                            alert("You don't have enough money for withdraw")
+                        }
+
                         break;
 
                     case 2: //deposit 
@@ -46,11 +51,10 @@
                         break;
 
                     default:
-                        console.log("Invalid option");
+                       alert("Invalid option");
                 }
             }
         }
-
 
     </script>
 </body>
