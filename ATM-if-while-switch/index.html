@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+       1. while-prompt 
+       2. exit while when option === 4
+       3. variable for initial amount
+       4. withdraw, deposit, check balance
+       5. use switch statement for different options
+       */
+        let balance = 100
+
+        while (true) {
+            let userInput = +prompt(`Please enter the following options: 
+            1. Withdraw 
+            2.Deposit 
+            3.Check Balcnce 
+            4.Exit
+            `)
+            if (userInput === 4) {
+                break
+            }
+            else {
+                switch (userInput) {
+                    case 1: //withdraw
+                        let withdrawAmount = +prompt('Enter the amount you want to withdraw:')
+                        if (withdrawAmount <= balance) {
+                            balance -= withdrawAmount
+                        } else {
+                            alert("You don't have enough money for withdraw")
+                        }
+
+                        break;
+
+                    case 2: //deposit 
+                        let depositAmount = +prompt('Enter the amount you want to withdraw:')
+                        balance += depositAmount;
+                        break;
+
+                    case 3:
+                        alert(`Your balance is: ${balance}`)
+                        break;
+
+                    default:
+                       alert("Invalid option");
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
