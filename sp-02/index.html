@@ -10,18 +10,43 @@
 <body>
 </body>
 <script>
-    // 1. Calculates the sum of numbers from 1 to 100 as well as the average
-    let sum = 0
+    /* 
+    1. Calculates the sum of numbers from 1 to 100 as well as the average
+     */
 
-    const maxNum = 100
-    for (let i = 1; i <= maxNum; i++) {
-        sum = sum + i // Accumulate the sum
-        console.log('sum = ', sum);
-    }
-    const avg = sum / maxNum; // Calculate the average
+    // let sum = 0
+    // // const maxNum = 100
+    // for (let i = 1; i <= maxNum; i++) {
+    //     sum = sum + i // Accumulate the sum
+    //     console.log('sum = ', sum);
+    // }
+    // const avg = sum / maxNum; // Calculate the average
 
-    console.log('Sum =', sum);  // Log the total sum
-    console.log('Average =', avg); // Log the average
+    // console.log('Sum =', sum);  // Log the total sum
+    // console.log('Average =', avg); // Log the average
+
+    /* 
+    2. Finding and logging numbers between 100 and 200 that are divisible by 6  
+    */
+
+    // for (let i = 100; i <= 200; i++) {
+    //     if (i % 6 === 0) {
+    //         console.log('Numbers between 100 and 200 divisible by 6:', i);
+    //     }
+    // }
+
+    /* 
+    3. Use the ternary operator to alert the greater number
+    */
+    let num1 = +prompt("Please enter the first number")
+    let num2 = +prompt("Please enter the second number")
+
+    num1 === num2
+        ? alert("Both number are equal!")
+        : num1 > num2
+            ? alert(`The greater number is: ${num1}`)
+            : alert(`The greater number is: ${num2}`)
+
 
 </script>
 
