@@ -38,14 +38,30 @@
     /* 
     3. Use the ternary operator to alert the greater number
     */
-    let num1 = +prompt("Please enter the first number")
-    let num2 = +prompt("Please enter the second number")
+    // let num1 = +prompt("Please enter the first number")
+    // let num2 = +prompt("Please enter the second number")
 
-    num1 === num2
-        ? alert("Both number are equal!")
-        : num1 > num2
-            ? alert(`The greater number is: ${num1}`)
-            : alert(`The greater number is: ${num2}`)
+    // num1 === num2
+    //     ? alert("Both number are equal!")
+    //     : num1 > num2
+    //         ? alert(`The greater number is: ${num1}`)
+    //         : alert(`The greater number is: ${num2}`)
+
+    /* 
+    4. Computing the cumulative sum from 1 to a user-defined number
+    */
+
+    let userInput = Number(prompt('Please enter a positive number:'));
+    let sum = 0;
+
+    if (userInput > 0 && Number.isInteger(userInput)) {
+        for (let i = 1; i <= userInput; i++) {
+            sum += i
+        }
+        alert(`The sum of the numbers from 1 to ${userInput} is ${sum}`)
+    } else {
+        alert('Please enter a valid positive number')
+    }
 
 
 </script>
