@@ -95,44 +95,67 @@
     英文自己查有道。比如星期一是 monday 星期二是 tuesday 
     */
 
-    let userInput = Number(prompt('Please enter a valid number between 1 and 7'))
+    // let userInput = Number(prompt('Please enter a valid number between 1 and 7'))
 
-    switch (userInput) {
-        case 1:
-            alert('Monday')
-            break;
+    // switch (userInput) {
+    //     case 1:
+    //         alert('Monday')
+    //         break;
 
-        case 2:
-            alert('Tuesday')
-            break;
+    //     case 2:
+    //         alert('Tuesday')
+    //         break;
 
-        case 3:
-            alert('Wednesday')
-            break;
+    //     case 3:
+    //         alert('Wednesday')
+    //         break;
 
-        case 4:
-            alert('Thursday')
-            break;
+    //     case 4:
+    //         alert('Thursday')
+    //         break;
 
-        case 5:
-            alert('Friday')
-            break;
+    //     case 5:
+    //         alert('Friday')
+    //         break;
 
-        case 6:
-            alert('Saturday')
-            break;
+    //     case 6:
+    //         alert('Saturday')
+    //         break;
 
-        case 7:
-            alert('Sunday')
-            break;
+    //     case 7:
+    //         alert('Sunday')
+    //         break;
 
-        default:
-            alert('Please enter a valid number between 1 and 7')
+    //     default:
+    //         alert('Please enter a valid number between 1 and 7')
+    // }
+
+    /* 7.用户登录验证
+      题目描述：接收用户输入的用户名和密码，若用户名为 “admin” ,且密码为 “123456” ,则提示用户登录成功! 否则，让用户一直输入。 
+      */
+    let adminUser = 'admin'
+    let adminPwd = '123456'
+
+    while (true) {
+        let usernameInput = prompt('Enter your username: ')
+
+        if (usernameInput === adminUser) {
+
+            while (true) {
+                let userpwdInput = prompt('Enter your password: ')
+                if (userpwdInput === adminPwd) {
+                    alert('Log in successful')
+                    break;
+                } else {
+                    alert('Incorrect password. Please try again.')
+                }
+            }
+            break; // Exit the username loop after successful login
+        } else {
+            alert("Invalid username. Please try again.")
+        }
     }
 
-
-
-  
 </script>
 
 </html>
