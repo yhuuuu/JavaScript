@@ -135,8 +135,11 @@
       */
     let adminUser = 'admin'
     let adminPwd = '123456'
+    let maxAttempt = 3
+    let attemptCount = 0
 
-    while (true) {
+
+    while (attemptCount < maxAttempt) {
         let usernameInput = prompt('Enter your username: ')
 
         // Handle canceling prompt input
@@ -159,8 +162,13 @@
             break; // Exit the username loop after successful login
         } else {
             alert("Invalid username. Please try again.")
+            attemptCount++;
         }
     }
+    if(attemptCount === maxAttempt){
+        alert('Too many failed attempts. Please try again later.')
+    }
+
 
 </script>
 
