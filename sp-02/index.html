@@ -133,40 +133,57 @@
     /* 7.用户登录验证
       题目描述：接收用户输入的用户名和密码，若用户名为 “admin” ,且密码为 “123456” ,则提示用户登录成功! 否则，让用户一直输入。 
       */
-    let adminUser = 'admin'
-    let adminPwd = '123456'
-    let maxAttempt = 3
-    let attemptCount = 0
-
+    let adminUser = 'admin';
+    let adminPwd = '123456';
+    let maxAttempt = 3;
+    let attemptCount = 0;
 
     while (attemptCount < maxAttempt) {
-        let usernameInput = prompt('Enter your username: ')
+        let usernameInput = prompt('Enter your username:');
 
-        // Handle canceling prompt input
         if (usernameInput === null) {
             alert('You have canceled the username input.');
-            break;
+            break; // Exit loop if username input is canceled
         }
 
         if (usernameInput === adminUser) {
+            let passwordAttempt = 0;
 
-            while (true) {
-                let userpwdInput = prompt('Enter your password: ')
+            while (passwordAttempt < maxAttempt) {
+                let userpwdInput = prompt('Enter your password:');
+
+                if (userpwdInput === null) {
+                    alert('You have canceled the password input.');
+                    break; // Exit password loop if input is canceled
+                }
+
                 if (userpwdInput === adminPwd) {
-                    alert('Log in successful')
-                    break;
+                    alert('Login successful!');
+                    break; // Exit password loop on successful login
                 } else {
-                    alert('Incorrect password. Please try again.')
+                    alert('Incorrect password. Please try again.');
+                    passwordAttempt++;
+                }
+
+                if (passwordAttempt === maxAttempt) {
+                    alert('Too many failed attempts for password. Please try again later.');
+                    break; // Exit password loop after too many failed attempts
                 }
             }
-            break; // Exit the username loop after successful login
+
+            if (passwordAttempt === maxAttempt) {
+                break; // Exit username loop after failed password attempts
+            }
+
+            break; // Exit username loop after successful login
         } else {
-            alert("Invalid username. Please try again.")
+            alert('Invalid username. Please try again.');
             attemptCount++;
         }
-    }
-    if(attemptCount === maxAttempt){
-        alert('Too many failed attempts. Please try again later.')
+
+        if (attemptCount === maxAttempt) {
+            alert('Too many failed username attempts. Please try again later.');
+        }
     }
 
 
