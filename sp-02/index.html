@@ -139,6 +139,12 @@
     while (true) {
         let usernameInput = prompt('Enter your username: ')
 
+        // Handle canceling prompt input
+        if (usernameInput === null) {
+            alert('You have canceled the username input.');
+            break;
+        }
+
         if (usernameInput === adminUser) {
 
             while (true) {
