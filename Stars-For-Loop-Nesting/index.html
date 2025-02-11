@@ -27,12 +27,14 @@
         // }
 
         /* 
-        Print stars by user input 
+        Get user input and convert it to a number
          */
         let rows = +prompt('Please enter the number of rows of stars:"')
+        let cols = +prompt('Please enter the number of columns of stars:"')
+
         for (let row = 1; row <= rows; row++) {
             // Each row has 5 stats
-            for (let star = 1; star <= 5; star++) {
+            for (let star = 1; star <= cols; star++) {
                 document.write(`★`)
             }
             document.write(`<br>`)
