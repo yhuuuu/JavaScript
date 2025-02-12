@@ -26,29 +26,38 @@
         //      document.write(`<br>`)
         // }
 
-        /* 
-        Get user input and convert it to a number
-         */
-        let rows = +prompt('Please enter the number of rows of stars:"')
-        let cols = +prompt('Please enter the number of columns of stars:"')
+        // /*
+        // Print stars by user's prompt
+        // */
 
-        // Validate input (ensure both are valid number and greater than 0)
-        if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
-            document.write('Invalid input. Please entere positive numbers.')
+        // //Get user input and convert it to a number
+        // let rows = +prompt('Please enter the number of rows of stars:"')
+        // let cols = +prompt('Please enter the number of columns of stars:"')
 
-        } else {
-            // Print the stars
-            for (let row = 1; row <= rows; row++) {
-                for (let star = 1; star <= cols; star++) {
-                    document.write(`★`)
-                }
-                document.write(`<br>`)
+        // // Validate input (ensure both are valid number and greater than 0)
+        // if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+        //     document.write('Invalid input. Please entere positive numbers.')
+
+        // } else {
+        //     // Print the stars
+        //     for (let row = 1; row <= rows; row++) {
+        //         for (let star = 1; star <= cols; star++) {
+        //             document.write(`★`)
+        //         }
+        //         document.write(`<br>`)
+        //     }
+        // }
+
+        /* Print right triangle made of stars */
+
+        // Outer loop controls the number of rows
+        for (let row = 1; row <= 5; row++) {
+            // Inner loop prints stars equal to the current row number
+            for (let star = 1; star <= row; star++) {
+                document.write(`★`)
             }
-
-
+            document.write(`<br>`)
         }
-
-
 
     </script>
 </body>
