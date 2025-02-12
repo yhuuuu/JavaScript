@@ -32,12 +32,20 @@
         let rows = +prompt('Please enter the number of rows of stars:"')
         let cols = +prompt('Please enter the number of columns of stars:"')
 
-        for (let row = 1; row <= rows; row++) {
-            // Each row has 5 stats
-            for (let star = 1; star <= cols; star++) {
-                document.write(`★`)
+        // Validate input (ensure both are valid number and greater than 0)
+        if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+            document.write('Invalid input. Please entere positive numbers.')
+
+        } else {
+            // Print the stars
+            for (let row = 1; row <= rows; row++) {
+                for (let star = 1; star <= cols; star++) {
+                    document.write(`★`)
+                }
+                document.write(`<br>`)
             }
-            document.write(`<br>`)
+
+
         }
 
 
