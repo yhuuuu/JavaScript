@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
         }
+
         .box {
             display: flex;
             width: 700px;
@@ -21,22 +22,24 @@
             align-items: flex-end;
             text-align: center;
         }
-        .box>div{
+
+        .box>div {
             display: flex;
             width: 50px;
             background-color: pink;
             flex-direction: column;
             justify-content: space-between;
         }
-        .box div span{
-           margin-top: -20px; 
+
+        .box div span {
+            margin-top: -20px;
         }
-        .box div h4{
+
+        .box div h4 {
             margin-bottom: -35px;
             width: 70px;
             margin-left: -10px;
         }
-
     </style>
 </head>
 
@@ -60,7 +63,15 @@
         </div>
     </div>
     <script>
+        let dataArr = []
+        //promt user for each quarter
+        for (let i= 1; i <= 4; i++) {
+            let currentData = prompt(`Please enter data for quater ${i} `)
+            dataArr.push(currentData)
+        }
+        console.log(dataArr);
 
+       
     </script>
 </body>
 
