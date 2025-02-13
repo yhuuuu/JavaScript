@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarChart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+            width: 700px;
+            height: 300px;
+            border-left: 1px solid pink;
+            border-bottom: 1px solid pink;
+            margin: 50px auto;
+            justify-content: space-around;
+            align-items: flex-end;
+            text-align: center;
+        }
+
+        .box>div {
+            display: flex;
+            width: 50px;
+            background-color: pink;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box div span {
+            margin-top: -20px;
+        }
+
+        .box div h4 {
+            margin-bottom: -35px;
+            width: 70px;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <div style="height: 123px;">
+            <span>123</span>
+            <h4>First Quarter</h4>
+        </div>
+        <div style="height: 156px;">
+            <span>156</span>
+            <h4>Second Quarter</h4>
+        </div>
+        <div style="height: 120px;">
+            <span>120</span>
+            <h4>Third Quarter</h4>
+        </div>
+        <div style="height: 210px;">
+            <span>210</span>
+            <h4>Fourth Quarter</h4>
+        </div> -->
+    </div>
+    <script>
+        let dataArr = []
+        let box = document.getElementsByClassName("box")[0]
+        // Prompt user for each quarter
+        for (let i = 1; i <= 4; i++) {
+            let currentData = +prompt(`Please enter data for quater ${i} `)
+           
+            // console.log(`i = ${i}`);
+            
+            // Validate input (must be a positive number)
+            if (isNaN(currentData) || currentData < 0) {
+                alert("Invalid input. Please enter a positive number.")
+                i--
+                continue
+            }
+            dataArr.push(currentData)
+           
+            // Create a new div element for the bar
+            let barDiv = document.createElement("div")
+            barDiv.style.height = `${currentData}px`
+
+            // Create span for the value inside the bar
+            let valueSpan = document.createElement("span")
+            valueSpan.innerText = currentData
+
+            // Create h4 label for quarter name
+            let labelH4 = document.createElement("h4")
+            labelH4.innerText = `Q${i} `
+
+            // Append span and label to the bar
+            barDiv.appendChild(valueSpan)
+            barDiv.appendChild(labelH4)
+
+            // Append the bar to the box container
+            box.appendChild(barDiv)
+        }
+
+        console.log(dataArr);
+
+    </script>
+</body>
+
+</html>
