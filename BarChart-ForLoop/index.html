@@ -45,7 +45,7 @@
 
 <body>
     <div class="box">
-        <div style="height: 123px;">
+        <!-- <div style="height: 123px;">
             <span>123</span>
             <h4>First Quarter</h4>
         </div>
@@ -60,18 +60,38 @@
         <div style="height: 210px;">
             <span>210</span>
             <h4>Fourth Quarter</h4>
-        </div>
+        </div> -->
     </div>
     <script>
         let dataArr = []
-        //promt user for each quarter
-        for (let i= 1; i <= 4; i++) {
+        let box = document.getElementsByClassName("box")[0]
+        // Prompt user for each quarter
+        for (let i = 1; i <= 4; i++) {
             let currentData = prompt(`Please enter data for quater ${i} `)
             dataArr.push(currentData)
+
+            // Create a new div element for the bar
+            let barDiv = document.createElement("div")
+            barDiv.style.height = `${currentData}px`
+
+            // Create span for the value inside the bar
+            let valueSpan = document.createElement("span")
+            valueSpan.innerText = currentData
+
+            // Create h4 label for quarter name
+            let labelH4 = document.createElement("h4")
+            labelH4.innerText = `Q${i} `
+
+            // Append span and label to the bar
+            barDiv.appendChild(valueSpan)
+            barDiv.appendChild(labelH4)
+
+            // Append the bar to the box container
+            box.appendChild(barDiv)
+
         }
         console.log(dataArr);
 
-       
     </script>
 </body>
 
