@@ -147,8 +147,25 @@
         // console.log(sum);
 
 
+        /* 练习题4:
+              - 使用for循环 - 求出数组里大于5的i和 [4, 9, 5, 20, 3, 11] 
+              */
+        let arr = [4, 9, 5, 20, 3, 11]
 
-      
+        // For loop
+        let sum = 0
+        for( let i = 0; i< arr.length; i++){
+            if (arr[i]>5){
+                console.log('find it');
+                 sum += arr[i]
+            }
+        }
+        console.log(sum);
+
+        // // Filter method
+        // let result = arr.filter((num) => num > 5)
+        // console.log(result);
+
 
     </script>
 </body>
