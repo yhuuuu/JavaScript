@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sp03</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+        写一个程序，要求如下（★★）
+        - 需求1：让用户输入五个有效年龄（0-100之间），**放入数组中**
+        - 必须输入五个有效年龄年龄，如果是无效年龄，则不能放入数组中
+        - 需求2：打印出所有成年人的年龄 (数组筛选)
+        - 需求3：打印出所有人总年龄 （累加）
+        - 需求4：打印出所有人的平均年龄 （累加）
+        - 需求5：打印出最大年龄和最小年龄 （最大值）
+         */
+
+        //需求1:
+        let ageArr = [];
+        for (let i = 1; i <= 5; i++) {
+
+            let age = +prompt(`Please enter age #${i} (Age between 0-100)`);
+
+            // console.log(`current i = ${i}`);
+
+            if (isNaN(age) || age < 0 || age > 100) {
+                alert('Please enter age between 0 to 100');
+                i--;
+                continue;
+            }
+            ageArr.push(age);
+        }
+        console.log(`All age: ${ageArr}`);
+
+        //需求2 over 21:
+        let adultArr = []
+        for (let j = 0; j < ageArr.length; j++) {
+            if (ageArr[j] >= 21) {
+                adultArr.push(ageArr[j])
+            }
+        }
+        console.log(`Age that are over 21: ${adultArr}`);
+
+        //需求3 Sum:
+        let sum = 0;
+        for (let k = 0; k < ageArr.length; k++) {
+            sum += ageArr[k]
+        }
+        console.log(`Sum: ${sum}`);
+
+        //需求4 Avg:
+        let avg = 0
+        avg = sum / ageArr.length
+        console.log(`Average: ${avg}`);
+
+        //需求5 Oldest and Youngest:
+
+        let sortedAge = ageArr.slice() // prevent .sort() from modifying the original ageArr
+        
+        //default .sort() method sorts values as strings, meaning numbers might not be sorted correctly [1, 10, 2] -> [1,2,10]
+        sortedAge.sort((a, b) => (a - b))
+        console.log(sortedAge);
+
+        let yougnestAge = sortedAge[0];
+        let oldestAge = sortedAge[sortedAge.length - 1];
+       
+
+        console.log(`oldest age: ${oldestAge}`);
+        console.log(`yougest age: ${yougnestAge} `);
+    </script>
+</body>
+
+</html>
