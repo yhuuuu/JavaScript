@@ -90,12 +90,13 @@
         /* 练习题2：
         找出数组中 元素为10的下标，有则打印该下标，没有则打印-1
         - 例如: [88,20,10,100,50] 打印 2
-        - 例如: [88,20,30,100,50] 打印-1 
+        - 例如: [88,20,30,100,50] 打印-1
         */
 
-        let arr1 = [88, 20, 10, 100, 50];
-        // let arr1 = [88, 20, 30, 100, 50];
-        let arr2 = [88, 20, 30, 100, 50];
+        // let arr1 = [88, 20, 10, 100, 50];
+        // // let arr1 = [88, 20, 30, 100, 50];
+        // let arr2 = [88, 20, 30, 100, 50];
+
         // //--- map+filter method ----
         // let indexes1 = arr1.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
         // let indexes2 = arr2.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
@@ -110,17 +111,44 @@
         // console.log(index2);
 
 
-        // --- For loop method ---
-        let index = -1 //defult index
-        for (let i = 0; i < arr1.length; i++) {
-          if(arr1[i]=== 10){
-            console.log('find it');
-            index = i;
-            break;
-          }
-          console.log('next');
-        }
-        console.log(`index:${index}`);
+        // // --- For loop method ---
+        // let index = -1 //defult index
+        // for (let i = 0; i < arr1.length; i++) {
+        //   if(arr1[i]=== 10){
+        //     console.log('find it');
+        //     index = i;
+        //     break;
+        //   }
+        //   console.log('next');
+        // }
+        // console.log(`index:${index}`);
+
+        /*
+        练习题3:
+        使用for循环 - 求出数组元素的和 [5, 8, 9, 2, 1, 5]
+         */
+
+        // let arr = [5, 8, 9, 2, 1, 5];
+        // // For loop method
+        // let sum = 0;
+        // for (let i = 0; i < arr.length; i++) {
+        //     sum += arr[i]
+        // }
+        // console.log(`Sum of arr: ${sum}`);
+
+        // // Reduce method
+        // let sum = arr.reduce((acc, num) => acc + num, 0)
+
+        // console.log(sum);
+
+        // // For each  method
+        // let sum = 0
+        // arr.forEach((num) => sum += num)
+        // console.log(sum);
+
+
+
+      
 
     </script>
 </body>
