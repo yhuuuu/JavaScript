@@ -31,44 +31,47 @@
             if (isNaN(age) || age < 0 || age > 100) {
                 alert('Please enter age between 0 to 100');
                 i--;
-                continue;
+                continue; //Re-enter for current index if the age is invalidate
             }
             ageArr.push(age);
         }
         console.log(`All age: ${ageArr}`);
 
         //需求2 over 21:
-        let adultArr = []
-        for (let j = 0; j < ageArr.length; j++) {
-            if (ageArr[j] >= 21) {
-                adultArr.push(ageArr[j])
-            }
-        }
-        console.log(`Age that are over 21: ${adultArr}`);
+        // let adultArr = []
+        // for (let j = 0; j < ageArr.length; j++) {
+        //     if (ageArr[j] >= 21) {
+        //         adultArr.push(ageArr[j])
+        //     }
+        // }
+        // console.log(`Age that are over 21: ${adultArr}`);
+
+        let adultArr = ageArr.filter(age => age >= 21)
+        console.log(`Adult (21+): ${adultArr}`);
 
         //需求3 Sum:
-        let sum = 0;
-        for (let k = 0; k < ageArr.length; k++) {
-            sum += ageArr[k]
-        }
-        console.log(`Sum: ${sum}`);
+        // let sum = 0;
+        // for (let k = 0; k < ageArr.length; k++) {
+        //     sum += ageArr[k]
+        // }
+        // console.log(`Sum: ${sum}`);
+        let sum = ageArr.reduce((acc, age) => acc + age, 0)
+        console.log(`Sum of all ages: ${sum}`);
 
         //需求4 Avg:
-        let avg = 0
-        avg = sum / ageArr.length
-        console.log(`Average: ${avg}`);
+        let avg = sum / ageArr.length
+        console.log(`Average age: ${avg.toFixed(2)}`);
 
         //需求5 Oldest and Youngest:
 
         let sortedAge = ageArr.slice() // prevent .sort() from modifying the original ageArr
-        
+
         //default .sort() method sorts values as strings, meaning numbers might not be sorted correctly [1, 10, 2] -> [1,2,10]
         sortedAge.sort((a, b) => (a - b))
-        console.log(sortedAge);
+        console.log(`Sorted age: ${sortedAge}`);
 
         let yougnestAge = sortedAge[0];
         let oldestAge = sortedAge[sortedAge.length - 1];
-       
 
         console.log(`oldest age: ${oldestAge}`);
         console.log(`yougest age: ${yougnestAge} `);
