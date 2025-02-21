@@ -5,285 +5,343 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sp03</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            width: 540px;
+            margin: 20px auto
+        }
+    </style>
 </head>
 
 <body>
+    <ul class="box">
+        <script>
+            /* 练习题1 ：
+            写一个程序，要求如下（★★）
+            - 需求1：让用户输入五个有效年龄（0-100之间），**放入数组中**
+            - 必须输入五个有效年龄年龄，如果是无效年龄，则不能放入数组中
+            - 需求2：打印出所有成年人的年龄 (数组筛选)
+            - 需求3：打印出所有人总年龄 （累加）
+            - 需求4：打印出所有人的平均年龄 （累加）
+            - 需求5：打印出最大年龄和最小年龄 （最大值）
+             */
 
-    <script>
-        /* 练习题1 ：
-        写一个程序，要求如下（★★）
-        - 需求1：让用户输入五个有效年龄（0-100之间），**放入数组中**
-        - 必须输入五个有效年龄年龄，如果是无效年龄，则不能放入数组中
-        - 需求2：打印出所有成年人的年龄 (数组筛选)
-        - 需求3：打印出所有人总年龄 （累加）
-        - 需求4：打印出所有人的平均年龄 （累加）
-        - 需求5：打印出最大年龄和最小年龄 （最大值）
-         */
+            // //需求1:
+            // let ageArr = [];
+            // for (let i = 1; i <= 5; i++) {
 
-        // //需求1:
-        // let ageArr = [];
-        // for (let i = 1; i <= 5; i++) {
+            //     let age = +prompt(`Please enter age #${i} (Age between 0-100)`);
 
-        //     let age = +prompt(`Please enter age #${i} (Age between 0-100)`);
+            //     // console.log(`current i = ${i}`);
 
-        //     // console.log(`current i = ${i}`);
+            //     if (isNaN(age) || age < 0 || age > 100) {
+            //         alert('Please enter age between 0 to 100');
+            //         i--;
+            //         continue; //Re-enter for current index if the age is invalidate
+            //     }
+            //     ageArr.push(age);
+            // }
+            // console.log(`All age: ${ageArr}`);
 
-        //     if (isNaN(age) || age < 0 || age > 100) {
-        //         alert('Please enter age between 0 to 100');
-        //         i--;
-        //         continue; //Re-enter for current index if the age is invalidate
-        //     }
-        //     ageArr.push(age);
-        // }
-        // console.log(`All age: ${ageArr}`);
+            // //需求2 over 21:
+            // // let adultArr = []
+            // // for (let j = 0; j < ageArr.length; j++) {
+            // //     if (ageArr[j] >= 21) {
+            // //         adultArr.push(ageArr[j])
+            // //     }
+            // // }
+            // // console.log(`Age that are over 21: ${adultArr}`);
 
-        // //需求2 over 21:
-        // // let adultArr = []
-        // // for (let j = 0; j < ageArr.length; j++) {
-        // //     if (ageArr[j] >= 21) {
-        // //         adultArr.push(ageArr[j])
-        // //     }
-        // // }
-        // // console.log(`Age that are over 21: ${adultArr}`);
+            // let adultArr = ageArr.filter(age => age >= 21)
+            // console.log(`Adult (21+): ${adultArr}`);
 
-        // let adultArr = ageArr.filter(age => age >= 21)
-        // console.log(`Adult (21+): ${adultArr}`);
+            // //需求3 Sum:
+            // // let sum = 0;
+            // // for (let k = 0; k < ageArr.length; k++) {
+            // //     sum += ageArr[k]
+            // // }
+            // // console.log(`Sum: ${sum}`);
+            // let sum = ageArr.reduce((acc, age) => acc + age, 0)
+            // console.log(`Sum of all ages: ${sum}`);
 
-        // //需求3 Sum:
-        // // let sum = 0;
-        // // for (let k = 0; k < ageArr.length; k++) {
-        // //     sum += ageArr[k]
-        // // }
-        // // console.log(`Sum: ${sum}`);
-        // let sum = ageArr.reduce((acc, age) => acc + age, 0)
-        // console.log(`Sum of all ages: ${sum}`);
+            // //需求4 Avg:
+            // let avg = sum / ageArr.length
+            // console.log(`Average age: ${avg.toFixed(2)}`);
 
-        // //需求4 Avg:
-        // let avg = sum / ageArr.length
-        // console.log(`Average age: ${avg.toFixed(2)}`);
+            // //需求5 Oldest and Youngest:
+            // // --- Assumption method ---
+            // let max = ageArr[0]
+            // let min = ageArr[0]
+            // for (let i = 1; i < ageArr.length; i++) {
+            //     if (max < ageArr[i]) {
+            //         max = ageArr[i]
+            //     }
+            //     if (min > ageArr[i]) {
+            //         min = ageArr[i]
+            //     }
+            // }
+            // // --- Sort Method---
+            // let sortedAge = ageArr.slice() // prevent .sort() from modifying the original ageArr
 
-        // //需求5 Oldest and Youngest:
-        // // --- Assumption method ---
-        // let max = ageArr[0]
-        // let min = ageArr[0]
-        // for (let i = 1; i < ageArr.length; i++) {
-        //     if (max < ageArr[i]) {
-        //         max = ageArr[i]
-        //     }
-        //     if (min > ageArr[i]) {
-        //         min = ageArr[i]
-        //     }
-        // }
-        // // --- Sort Method---
-        // let sortedAge = ageArr.slice() // prevent .sort() from modifying the original ageArr
+            // //default .sort() method sorts values as strings, meaning numbers might not be sorted correctly [1, 10, 2] -> [1,2,10]
+            // sortedAge.sort((a, b) => (a - b))
+            // console.log(`Sorted age: ${sortedAge}`);
 
-        // //default .sort() method sorts values as strings, meaning numbers might not be sorted correctly [1, 10, 2] -> [1,2,10]
-        // sortedAge.sort((a, b) => (a - b))
-        // console.log(`Sorted age: ${sortedAge}`);
+            // let yougnestAge = sortedAge[0];
+            // let oldestAge = sortedAge[sortedAge.length - 1];
 
-        // let yougnestAge = sortedAge[0];
-        // let oldestAge = sortedAge[sortedAge.length - 1];
+            // console.log(`oldest age: ${oldestAge}`);
+            // console.log(`yougest age: ${yougnestAge} `);
 
-        // console.log(`oldest age: ${oldestAge}`);
-        // console.log(`yougest age: ${yougnestAge} `);
+            /* 练习题2：
+            找出数组中 元素为10的下标，有则打印该下标，没有则打印-1
+            - 例如: [88,20,10,100,50] 打印 2
+            - 例如: [88,20,30,100,50] 打印-1
+            */
 
-        /* 练习题2：
-        找出数组中 元素为10的下标，有则打印该下标，没有则打印-1
-        - 例如: [88,20,10,100,50] 打印 2
-        - 例如: [88,20,30,100,50] 打印-1
-        */
+            // let arr1 = [88, 20, 10, 100, 50];
+            // // let arr1 = [88, 20, 30, 100, 50];
+            // let arr2 = [88, 20, 30, 100, 50];
 
-        // let arr1 = [88, 20, 10, 100, 50];
-        // // let arr1 = [88, 20, 30, 100, 50];
-        // let arr2 = [88, 20, 30, 100, 50];
+            // //--- map+filter method ----
+            // let indexes1 = arr1.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
+            // let indexes2 = arr2.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
 
-        // //--- map+filter method ----
-        // let indexes1 = arr1.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
-        // let indexes2 = arr2.map((num, index) => num === 10 ? index : -1).filter(index => index != -1)
+            // console.log(indexes1.length > 0 ? indexes1 : -1);
+            // console.log(indexes2.length > 0 ? indexes2 : -1);
 
-        // console.log(indexes1.length > 0 ? indexes1 : -1);
-        // console.log(indexes2.length > 0 ? indexes2 : -1);
-
-        // // --- findIndex method ---
-        // let index1 = arr1.findIndex((num) => (num === 10))
-        // console.log(index1);
-        // let index2 = arr2.findIndex((num) => (num === 10))
-        // console.log(index2);
-
-
-        // // --- For loop method ---
-        // let index = -1 //defult index
-        // for (let i = 0; i < arr1.length; i++) {
-        //   if(arr1[i]=== 10){
-        //     console.log('find it');
-        //     index = i;
-        //     break;
-        //   }
-        //   console.log('next');
-        // }
-        // console.log(`index:${index}`);
-
-        /*
-        练习题3:
-        使用for循环 - 求出数组元素的和 [5, 8, 9, 2, 1, 5]
-         */
-
-        // let arr = [5, 8, 9, 2, 1, 5];
-        // // For loop method
-        // let sum = 0;
-        // for (let i = 0; i < arr.length; i++) {
-        //     sum += arr[i]
-        // }
-        // console.log(`Sum of arr: ${sum}`);
-
-        // // Reduce method
-        // let sum = arr.reduce((acc, num) => acc + num, 0)
-
-        // console.log(sum);
-
-        // // For each  method
-        // let sum = 0
-        // arr.forEach((num) => sum += num)
-        // console.log(sum);
+            // // --- findIndex method ---
+            // let index1 = arr1.findIndex((num) => (num === 10))
+            // console.log(index1);
+            // let index2 = arr2.findIndex((num) => (num === 10))
+            // console.log(index2);
 
 
-        /* 练习题4:
-              - 使用for循环 - 求出数组里大于5的i和 [4, 9, 5, 20, 3, 11]
-              */
-        // let arr = [4, 9, 5, 20, 3, 11]
+            // // --- For loop method ---
+            // let index = -1 //defult index
+            // for (let i = 0; i < arr1.length; i++) {
+            //   if(arr1[i]=== 10){
+            //     console.log('find it');
+            //     index = i;
+            //     break;
+            //   }
+            //   console.log('next');
+            // }
+            // console.log(`index:${index}`);
 
-        // // For loop
-        // let sum = 0
-        // for( let i = 0; i< arr.length; i++){
-        //     if (arr[i]>5){
-        //         console.log('find it');
-        //          sum += arr[i]
-        //     }
-        // }
-        // console.log(sum);
+            /*
+            练习题3:
+            使用for循环 - 求出数组元素的和 [5, 8, 9, 2, 1, 5]
+             */
 
-        // && Logical And Method
-        // let sum = 0
-        // for (let i = 0; i < arr.length; i++) {
-        //     arr[i] > 5 && (
-        //         console.log('Find it'),
-        //         sum += arr[i]
-        //     )
-        // }
-        // console.log(`The sum is: ${sum}`)
+            // let arr = [5, 8, 9, 2, 1, 5];
+            // // For loop method
+            // let sum = 0;
+            // for (let i = 0; i < arr.length; i++) {
+            //     sum += arr[i]
+            // }
+            // console.log(`Sum of arr: ${sum}`);
 
-        // // Filter method
-        // let result = arr.filter((num) => num > 5)
-        // console.log(result);
+            // // Reduce method
+            // let sum = arr.reduce((acc, num) => acc + num, 0)
 
+            // console.log(sum);
 
-        /*
-        练习题5:
-        使用for循环 - 求出班级里同学们平均年龄[15, 19, 21, 33, 18, 24]
-        */
-
-        // let ages = [15, 19, 21, 33, 18, 24]
-        // let sum = 0
-
-        // for (let i = 0; i < ages.length; i++) {
-        //     console.log(ages[i]);
-        //     sum = + ages[i]
-        //     let avg = sum / ages.length + 1
-        // }
-        // console.log(`Age average: ${avg}`);
-
-        /* 练习题6:
-        计算[2, 6, 18, 15, 40] 中能被3整除的偶数的和 
-        */
-        // let arr = [2, 6, 18, 15, 40]
-        // let dividedBy3 = 0
-
-        // // For loop method
-        // for (let i = 0; i < arr.length; i++) {
-        //     if (arr[i] % 3 === 0 && arr[i] % 2 === 0) {
-        //         dividedBy3 += arr[i]
-        //     }
-        // }
-        // console.log(dividedBy3);
-
-        // // Filter + reduce method
-        // dividedBy3 = arr
-        //     .filter((num) => num % 3 === 0 && num % 2 === 0)
-        //     .reduce((sum, num) => sum + num, 0)
-        // console.log(dividedBy3);
-
-        /*  练习题7：计算[2, 6, 18, 15, 40] 中能被3整除的偶数的个数 */
-
-        // let arr = [2, 6, 18, 15, 40];
-        // let dividedBy3 = []
-
-        // //------ For loop method
-        // for (let i = 0; i < arr.length; i++) {
-        //     if(arr[i] %3 === 0 && arr[i]%2 === 0){
-        //         dividedBy3.push(arr[i])
-        //     }
-        // }
-        // console.log(dividedBy3.length);
+            // // For each  method
+            // let sum = 0
+            // arr.forEach((num) => sum += num)
+            // console.log(sum);
 
 
-        // // --------filter method
-        // dividedBy3 = arr
-        //     .filter((num) => num % 3 === 0 && num % 2 === 0)
-        // console.log(dividedBy3.length);    
+            /* 练习题4:
+                  - 使用for循环 - 求出数组里大于5的i和 [4, 9, 5, 20, 3, 11]
+                  */
+            // let arr = [4, 9, 5, 20, 3, 11]
 
-        // //-----reduce method
-        // let count = arr.reduce((acc, num)=>{
-        //     if (num %3 ===0 && num %2 === 0){
-        //         return acc +1
-        //     }
-        //     return acc;
-        // },0)
-        // console.log(count);
+            // // For loop
+            // let sum = 0
+            // for( let i = 0; i< arr.length; i++){
+            //     if (arr[i]>5){
+            //         console.log('find it');
+            //          sum += arr[i]
+            //     }
+            // }
+            // console.log(sum);
 
-        // // ------for ...of method
-        // let count = 0 
-        // for(let num of arr){
-        //     if(num % 3 === 0 && num %2 ===0){
-        //         count ++;
-        //     } 
-        // }
-        // console.log(count);
+            // && Logical And Method
+            // let sum = 0
+            // for (let i = 0; i < arr.length; i++) {
+            //     arr[i] > 5 && (
+            //         console.log('Find it'),
+            //         sum += arr[i]
+            //     )
+            // }
+            // console.log(`The sum is: ${sum}`)
 
-        // // ------forEach method
-        // let count = 0 
-        // arr.forEach((num)=> {
-        //     if (num%3 ===0 && num %2 ===0){
-        //         count ++
-        //     }
-        // })
-        // console.log(count);
+            // // Filter method
+            // let result = arr.filter((num) => num > 5)
+            // console.log(result);
 
 
-        /* 练习题8：给一个数字数组，该数组中有很多数字0，将不为0的数据存入到一个新的数组中 */
+            /*
+            练习题5:
+            使用for循环 - 求出班级里同学们平均年龄[15, 19, 21, 33, 18, 24]
+            */
 
-        let arr = [0, 2, 5, 0, 8, 0, 10]
-        let nonZeroArr = []
+            // let ages = [15, 19, 21, 33, 18, 24]
+            // let sum = 0
 
-        // // -----For loop method
-        // for (let i = 0; i < arr.length; i++) {
-        //     if(arr[i] != 0){
-        //         nonZeroArr.push(arr[i])
-        //     }
-        // }
-        // console.log(nonZeroArr);
+            // for (let i = 0; i < ages.length; i++) {
+            //     console.log(ages[i]);
+            //     sum = + ages[i]
+            //     let avg = sum / ages.length + 1
+            // }
+            // console.log(`Age average: ${avg}`);
 
-        //     // forEch method
-        //     arr.forEach( (num) => {
-        //         if (num != 0){
-        //             nonZeroArr.push(num)
-        //         }
-        //     })
-        //     console.log(nonZeroArr);
+            /* 练习题6:
+            计算[2, 6, 18, 15, 40] 中能被3整除的偶数的和 
+            */
+            // let arr = [2, 6, 18, 15, 40]
+            // let dividedBy3 = 0
 
-        //filer method
-        // nonZeroArr = arr.filter((num) => num != 0)
-        // console.log(nonZeroArr);
-    </script>
+            // // For loop method
+            // for (let i = 0; i < arr.length; i++) {
+            //     if (arr[i] % 3 === 0 && arr[i] % 2 === 0) {
+            //         dividedBy3 += arr[i]
+            //     }
+            // }
+            // console.log(dividedBy3);
+
+            // // Filter + reduce method
+            // dividedBy3 = arr
+            //     .filter((num) => num % 3 === 0 && num % 2 === 0)
+            //     .reduce((sum, num) => sum + num, 0)
+            // console.log(dividedBy3);
+
+            /*  练习题7：计算[2, 6, 18, 15, 40] 中能被3整除的偶数的个数 */
+
+            // let arr = [2, 6, 18, 15, 40];
+            // let dividedBy3 = []
+
+            // //------ For loop method
+            // for (let i = 0; i < arr.length; i++) {
+            //     if(arr[i] %3 === 0 && arr[i]%2 === 0){
+            //         dividedBy3.push(arr[i])
+            //     }
+            // }
+            // console.log(dividedBy3.length);
+
+
+            // // --------filter method
+            // dividedBy3 = arr
+            //     .filter((num) => num % 3 === 0 && num % 2 === 0)
+            // console.log(dividedBy3.length);    
+
+            // //-----reduce method
+            // let count = arr.reduce((acc, num)=>{
+            //     if (num %3 ===0 && num %2 === 0){
+            //         return acc +1
+            //     }
+            //     return acc;
+            // },0)
+            // console.log(count);
+
+            // // ------for ...of method
+            // let count = 0 
+            // for(let num of arr){
+            //     if(num % 3 === 0 && num %2 ===0){
+            //         count ++;
+            //     } 
+            // }
+            // console.log(count);
+
+            // // ------forEach method
+            // let count = 0 
+            // arr.forEach((num)=> {
+            //     if (num%3 ===0 && num %2 ===0){
+            //         count ++
+            //     }
+            // })
+            // console.log(count);
+
+
+            /* 练习题8：给一个数字数组，该数组中有很多数字0，将不为0的数据存入到一个新的数组中 */
+
+            // let arr = [0, 2, 5, 0, 8, 0, 10]
+            // let nonZeroArr = []
+
+            // // -----For loop method
+            // for (let i = 0; i < arr.length; i++) {
+            //     if(arr[i] != 0){
+            //         nonZeroArr.push(arr[i])
+            //     }
+            // }
+            // console.log(nonZeroArr);
+
+            //     // forEch method
+            //     arr.forEach( (num) => {
+            //         if (num != 0){
+            //             nonZeroArr.push(num)
+            //         }
+            //     })
+            //     console.log(nonZeroArr);
+
+            //filer method
+            // nonZeroArr = arr.filter((num) => num != 0)
+            // console.log(nonZeroArr);
+
+
+
+            // 核心练习题
+            // 根据用户输入的个数，页面可以渲染对应王者荣耀永雄的个
+
+            let arr = [
+                './images/1.webp',
+                './images/2.webp',
+                './images/3.webp',
+                './images/4.webp',
+                './images/5.webp',
+                './images/6.webp',
+                './images/7.webp',
+                './images/8.webp',
+                './images/9.webp',
+                './images/10.webp',
+                './images/11.webp',
+                './images/12.webp',
+                './images/13.webp',
+                './images/14.webp',
+                './images/15.webp',
+                './images/16.webp',
+                './images/7.webp',
+                './images/18.webp',
+                './images/19.webp',
+                './images/20.webp'
+            ]
+
+            let num = prompt("Enter a number between 1-20 for displaing heroes pictures: ");
+
+            for (let i = 0; i < num; i++) {
+                document.write(`
+            <li>
+                <img src = "${arr[i]}">
+            </li>
+        `)
+            }
+
+        </script>
+    </ul>
 </body>
 
 </html>
