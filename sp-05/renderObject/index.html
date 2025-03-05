@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Object</title>
+
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>StudentID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Address</th>
+        </tr>
+        <tbody id="student-table"></tbody>
+    </table>
+
+    <script>
+        let students = [
+            { name: '小明', age: 18, gender: '男', hometown: '河北省' },
+            { name: '小红', age: 19, gender: '女', hometown: '河南省' },
+            { name: '小刚', age: 17, gender: '男', hometown: '山西省' },
+            { name: '小丽', age: 18, gender: '女', hometown: '山东省' },
+            { name: '小帅', age: 17, gender: '男', hometown: '山东省' }
+        ]
+
+        let tableBody = document.getElementById('student-table')
+
+        // for (let i = 0; i < students.length; i++) {
+        //     console.log(students[i]);
+        //     //console.log(students[i].name);
+        //     //console.log(students[i].hometown)
+        //     document.write(
+        //         `<tr>
+        //         <td>${i}</td>
+        //         <td>${students[i].name}</td>
+        //         <td>${students[i].age}</td>
+        //         <td>${students[i].gender}</td>
+        //         <td>${students[i].hometown}</td>
+        //      </tr>`)
+        // }
+
+        students.forEach((student, index) => {
+            let row = document.createElement('tr')
+            row.innerHTML = `
+                <td>${index}</td>
+                <td>${student.name}</td>
+                <td>${student.age}</td>
+                <td>${student.gender}</td>
+                <td>${student.hometown}</td>
+            `;
+            tableBody.appendChild(row)
+        })
+
+
+    </script>
+</body>
+
+</html>
