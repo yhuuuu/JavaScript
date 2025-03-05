@@ -4,21 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Render Object</title>
+    <title>Render student table</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 600px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px black solid;
+            /* border-collapse: collapse; */
+        }
+
+        tr {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        thead tr {
+            background-color: #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #eee
+        }
+    </style>
 </head>
 
 <body>
 
     <table>
-        <tr>
-            <th>StudentID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Address</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>StudentID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+            </tr>
+        </thead>
         <tbody id="student-table"></tbody>
+
+
     </table>
 
     <script>
@@ -49,7 +85,7 @@
         students.forEach((student, index) => {
             let row = document.createElement('tr')
             row.innerHTML = `
-                <td>${index}</td>
+                <td>${index + 1}</td>
                 <td>${student.name}</td>
                 <td>${student.age}</td>
                 <td>${student.gender}</td>
