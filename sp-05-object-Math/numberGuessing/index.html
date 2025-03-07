@@ -15,14 +15,17 @@
             ①：如果大于该数字，就提示，数字猜大了，继续猜
             ②：如果小于该数字，就提示，数字猜小了，继续猜
             ③：如果猜对了，就提示猜对了，程序结束 */
-
-        let randomNum = Math.floor(Math.random() * 10) + 1
+        function getRandom(N, M) {
+            return Math.floor(Math.random() *( M - N + 1))+ N
+        }
+        let randomNum = getRandom(1, 10)
         console.log(randomNum);
+
         while (true) {
             let userInput = prompt('Please guess a number between 1-10: ')
             let userNum = Number(userInput)
 
-            if (isNaN(userNum) ||  userNum < 1 ||userNum >10){
+            if (isNaN(userNum) || userNum < 1 || userNum > 10) {
                 alert('Please enter a valid number between 1 and 10: ')
                 continue
             }
