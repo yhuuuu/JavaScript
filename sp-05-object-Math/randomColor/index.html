@@ -42,8 +42,9 @@
             if (flag !== false) {
                 let hexColor = '#'
                 for (let i = 0; i < 6; i++) {
-                    let randomArrIndex = Math.floor(Math.random() * (arr.length))
-                    hexColor += arr[randomArrIndex]
+                    // let randomArrIndex = Math.floor(Math.random() * (arr.length))
+                    // hexColor += arr[randomArrIndex]
+                    hexColor += arr[Math.floor(Math.random() * (arr.length))]
                 }
                 return hexColor
 
