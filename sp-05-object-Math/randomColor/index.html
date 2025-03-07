@@ -38,42 +38,24 @@
         function getRandomColor(flag) {
             let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
 
-            // Create random hex code
-            if (flag === true) {
-                let randomColorByHexCode = '#'
-                let getRandomColorByHexCode = function () {
-                    let randomArrIndex = Math.floor(Math.random() * (arr.length))
-                    randomColorByHexCode += arr[randomArrIndex]
-                }
-
+            // Generate random hex color
+            if (flag !== false) {
+                let hexColor = '#'
                 for (let i = 0; i < 6; i++) {
-                    getRandomColorByHexCode()
+                    let randomArrIndex = Math.floor(Math.random() * (arr.length))
+                    hexColor += arr[randomArrIndex]
                 }
-                //console.log('randomColorByHexCode: ', randomColorByHexCode);
-                return randomColorByHexCode
+                return hexColor
 
-                // Create random RGB
+                // Generate random RGB color
             } else {
-                let randomColorByRGB = 'rgb('
-                let getRandomColorByRGBValue = function (N, M, index) {
-                    let randomNumber = Math.floor(Math.random() * (M - N + 1)) + N
-                    if (index === 2) {
-                        randomColorByRGB += `${randomNumber})`
-                    } else {
-                        randomColorByRGB += `${randomNumber},`
-                    }
-                }
 
-                for (let i = 0; i < 3; i++) {
-                    getRandomColorByRGBValue(0, 255, i)
-                }
-                // console.log('randomColorByRGB:' , randomColorByRGB);
-
-                return randomColorByRGB
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                return `rgb(${r},${g},${b})`;
             }
-
         }
-
         console.log(getRandomColor(true)) //#ffffff
         console.log(getRandomColor(false)) //rgb(255,255,255)
     </script>
