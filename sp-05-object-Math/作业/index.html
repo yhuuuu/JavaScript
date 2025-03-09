@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sp homework</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        练习题1：
+        点名: 每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
+         */
+
+        let stuArr = ["老赵", "老李", "小传", "小黑"]
+        let count = 1
+
+        while (stuArr.length > 0) {
+            // Random generate index for selecting student
+            let randomIndex = Math.floor(Math.random() * stuArr.length)
+            const selectedStudent = stuArr[randomIndex];
+
+            // Display drafted student
+            document.write(`第${count}位抽中的学生: ${selectedStudent} <br>`)
+            console.log(`before delete: ${stuArr}`);
+
+            // Remove drafted student
+            stuArr.splice(randomIndex, 1)
+            console.log(`after: ${stuArr}`);
+
+            count++;
+        }
+    </script>
+</body>
+
+</html>
