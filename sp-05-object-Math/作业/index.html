@@ -7,8 +7,24 @@
     <title>sp homework</title>
 
     <style>
-        box{
-            background-color: black;
+         div{
+            height: 40px;
+            width: 40px;
+            background: black;
+            color: black; /* 初始隐藏数字 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;    
+            border: 2px solid gray;  
+        }
+        p{
+            padding:10px;
+            margin:10px;
         }
     </style>
 </head>
@@ -16,11 +32,9 @@
 <body>
 
     <script>
-        /*
-        练习题1：
-        点名: 每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
+        /* 练习题1：点名: 
+        每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
          */
-
         // let stuArr = ["老赵", "老李", "小传", "小黑"]
         // let count = 1
 
@@ -40,10 +54,7 @@
         //     count++;
         // }
 
-        /*
-        练习题2：
-
-        声明对象
+        /* 练习题2：声明对象
         目的: 复习对象的声明
 
         要求:
@@ -51,18 +62,14 @@
         2. 该对象的属性为性别,年龄,爱好(3个)
         3. 该对象的方法有 说话, 吃饭(2个)
         4. 在控制台分别调用该对象的属性和方法
-
-        练习题3：
-
-        调用对象的方法
+        */
+        /* 练习题3: 调用对象的方法
         目的: 复习对象的使用
 
         要求:
         1. 对象声明完毕后, 调用对象中的吃饭的方法
         2. 提示: 对象中的方法本质是函数, 调用需要加()
-        3. 方法也可以传递参数的
-        */
-
+        3. 方法也可以传递参数的 */
         // let per = {
         //     gender: 'male',
         //     age: 27,
@@ -88,15 +95,22 @@
         let randomNumber = Math.floor(Math.random() * 21)
         console.log(randomNumber);
 
+        // Div box for random number
         let box = document.createElement('div')
-        box.style.background = 'black'
         box.innerText = randomNumber
-        document.body.appendChild(box);
+        //document.body.appendChild(box);
+
         while (guessCount <= maxGuess) {
-            let userInput = prompt('Please guess a number between 0 -20')
-            if (userInput < randomNumber) {
+            let userInput = prompt(`Guess a number between 0 - 20 (Attempt ${guessCount}/${maxGuess}):`)
+            let userNum = Number(userInput)
+
+            if (isNaN(userNum) || userNum < 0 || userNum > 20) {
+                alert('Invalid input! Please enter a number bwtween 0 and 20.')
+                continue
+            }
+            if (userNum < randomNumber) {
                 alert(`Your number is too small. You have ${maxGuess - guessCount} guess left`)
-            } else if (userInput > randomNumber) {
+            } else if (userNum > randomNumber) {
                 alert(`Your number is too big. You have ${maxGuess - guessCount} guess left`)
             } else {
                 alert('Congraulation! You won!')
@@ -106,13 +120,18 @@
             guessCount++
         }
         if (guessCount > maxGuess) {
-            document.write(`Game Over! Click to see the number`)
-        }
-       function handleClick(){
-        box.style.background = 'white'
-       }
+           let messageBox = document.createElement("p")
+           messageBox.innerText = `Game Over! Click to see the number`
+           document.body.append(messageBox)
+           document.body.appendChild(box);
 
-       box.addEventListener('click',handleClick)
+        }
+        function handleClick() {
+            box.style.background = 'white'
+            box.style.color = 'black'
+        }
+
+        box.addEventListener('click', handleClick)
 
         /*练习题5：完成课堂随z机生成颜色的案例*/
 
