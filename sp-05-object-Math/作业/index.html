@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sp homework</title>
+
+    <style>
+        box{
+            background-color: black;
+        }
+    </style>
 </head>
 
 <body>
+
     <script>
         /*
         练习题1：
@@ -56,26 +63,60 @@
         3. 方法也可以传递参数的
         */
 
-        let per = {
-            gender: 'male',
-            age: 27,
-            hobby: ['swimming', 'snowboarding', 'singing'],
-            speak(){
-                console.log('I can speak');
-            },
-            eat(food) {
-                console.log(`I ate ${food ?? 'nothing'} today`)
+        // let per = {
+        //     gender: 'male',
+        //     age: 27,
+        //     hobby: ['swimming', 'snowboarding', 'singing'],
+        //     speak(){
+        //         console.log('I can speak');
+        //     },
+        //     eat(food) {
+        //         console.log(`I ate ${food ?? 'nothing'} today`)
+        //     }
+        // }
+        // console.log(per.gender);
+        // console.log(per.age);
+        // console.log(`Hobbies: ${per.hobby.join(',')}`);
+        // per.speak()
+        // per.eat()
+        // per.eat('apple')
+
+        /*练习题4：猜数字游戏，设定次数，最多猜8次 */
+        let maxGuess = 8
+        let guessCount = 1
+
+        let randomNumber = Math.floor(Math.random() * 21)
+        console.log(randomNumber);
+
+        let box = document.createElement('div')
+        box.style.background = 'black'
+        box.innerText = randomNumber
+        document.body.appendChild(box);
+        while (guessCount <= maxGuess) {
+            let userInput = prompt('Please guess a number between 0 -20')
+            if (userInput < randomNumber) {
+                alert(`Your number is too small. You have ${maxGuess - guessCount} guess left`)
+            } else if (userInput > randomNumber) {
+                alert(`Your number is too big. You have ${maxGuess - guessCount} guess left`)
+            } else {
+                alert('Congraulation! You won!')
+                guessCount = 8
+                break
             }
+            guessCount++
         }
-        console.log(per.gender);
-        console.log(per.age);
-        console.log(`Hobbies: ${per.hobby.join(',')}`);
-        per.speak()
-        per.eat()
-        per.eat('apple')
+        if (guessCount > maxGuess) {
+            document.write(`Game Over! Click to see the number`)
+        }
+       function handleClick(){
+        box.style.background = 'white'
+       }
+
+       box.addEventListener('click',handleClick)
+
+        /*练习题5：完成课堂随z机生成颜色的案例*/
 
 
-       
 
     </script>
 </body>
