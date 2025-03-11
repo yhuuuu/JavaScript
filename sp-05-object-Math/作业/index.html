@@ -26,6 +26,11 @@
             padding:10px;
             margin:10px;
         }
+        #colorBox{
+            height: 100px;
+            width: 100px;
+           
+        }
     </style>
 </head>
 
@@ -89,54 +94,65 @@
         // per.eat('apple')
 
         /*练习题4：猜数字游戏，设定次数，最多猜8次 */
-        let maxGuess = 8
-        let guessCount = 1
+        // let maxGuess = 8
+        // let guessCount = 1
 
-        let randomNumber = Math.floor(Math.random() * 21)
-        console.log(randomNumber);
+        // let randomNumber = Math.floor(Math.random() * 21)
+        // console.log(randomNumber);
 
-        // Div box for random number
-        let box = document.createElement('div')
-        box.innerText = randomNumber
-        //document.body.appendChild(box);
+        // // Div box for random number
+        // let box = document.createElement('div')
+        // box.innerText = randomNumber
 
-        while (guessCount <= maxGuess) {
-            let userInput = prompt(`Guess a number between 0 - 20 (Attempt ${guessCount}/${maxGuess}):`)
-            let userNum = Number(userInput)
+        // while (guessCount <= maxGuess) {
+        //     let userInput = prompt(`Guess a number between 0 - 20 (Attempt ${guessCount}/${maxGuess}):`)
+        //     let userNum = Number(userInput)
 
-            if (isNaN(userNum) || userNum < 0 || userNum > 20) {
-                alert('Invalid input! Please enter a number bwtween 0 and 20.')
-                continue
-            }
-            if (userNum < randomNumber) {
-                alert(`Your number is too small. You have ${maxGuess - guessCount} guess left`)
-            } else if (userNum > randomNumber) {
-                alert(`Your number is too big. You have ${maxGuess - guessCount} guess left`)
-            } else {
-                alert('Congraulation! You won!')
-                guessCount = 8
-                break
-            }
-            guessCount++
+        //     if (isNaN(userNum) || userNum < 0 || userNum > 20) {
+        //         alert('Invalid input! Please enter a number bwtween 0 and 20.')
+        //         continue
+        //     }
+        //     if (userNum < randomNumber) {
+        //         alert(`Your number is too small. You have ${maxGuess - guessCount} guess left`)
+        //     } else if (userNum > randomNumber) {
+        //         alert(`Your number is too big. You have ${maxGuess - guessCount} guess left`)
+        //     } else {
+        //         alert('Congraulation! You won!')
+        //         guessCount = 8
+        //         break
+        //     }
+        //     guessCount++
+        // }
+        // if (guessCount > maxGuess) {
+        //    let messageBox = document.createElement("p")
+        //    messageBox.innerText = `Game Over! Click to see the number`
+        //    document.body.append(messageBox)
+        //    document.body.appendChild(box);
+
+        // }
+        // function handleClick() {
+        //     box.style.background = 'white'
+        //     box.style.color = 'black'
+        // }
+
+        // box.addEventListener('click', handleClick)
+
+        /*练习题5：完成课堂随机生成颜色的案例*/
+
+        function randomRGB(){
+            let num = Math.floor(Math.random()*256)
+            return num
         }
-        if (guessCount > maxGuess) {
-           let messageBox = document.createElement("p")
-           messageBox.innerText = `Game Over! Click to see the number`
-           document.body.append(messageBox)
-           document.body.appendChild(box);
+        let a = randomRGB()
+        let b = randomRGB()
+        let c = randomRGB()
 
-        }
-        function handleClick() {
-            box.style.background = 'white'
-            box.style.color = 'black'
-        }
-
-        box.addEventListener('click', handleClick)
-
-        /*练习题5：完成课堂随z机生成颜色的案例*/
-
-
-
+        console.log(`${a},${b},${c}`);
+        
+        let colorBox = document.createElement('div')
+        colorBox.id = 'colorBox'
+        colorBox.style.background = `rgb(${a},${b}, ${c})`
+        document.body.appendChild(colorBox)
     </script>
 </body>
 
