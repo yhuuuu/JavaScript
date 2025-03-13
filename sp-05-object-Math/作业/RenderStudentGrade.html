@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentGrade</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>SubjectNum</td>
+                <td>Subject</td>
+                <td>Grade</td>
+                <td>Delete</td>
+            </tr>
+
+        </thead>
+        <tbody id="tableBody">
+            <!-- <tr id="tableRow">
+             <td>1</td>
+             <td>2</td>
+             <td>3</td>
+             <td>删除</td> 
+            </tr>      -->
+        </tbody>
+    </table>
+
+    <script>
+        let data = [
+            { subject: '语文', score: 46 },
+            { subject: '数学', score: 80 },
+            { subject: '英语', score: 100 },
+        ]
+        function renderTable() {
+            let tableBody = document.getElementById('tableBody')
+            tableBody.innerHTML = "" //empty old data
+
+            for (let i = 0; i < data.length; i++) {
+                let tableRow = document.createElement('tr')
+                tableRow.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${data[i].subject}</td>
+                    <td>${data[i].score}</td>
+                    <td><button class="delete-btn" onclick="deleteRow(${i})">Delete</button></td>
+               `
+                tableBody.appendChild(tableRow);
+            }
+        }
+
+        function deleteRow(index) {
+            data.splice(index, 1);  // Remove the item from the array
+            renderTable(); //Re-render the table
+        }
+
+        renderTable(); // Initial render
+
+    </script>
+</body>
+
+</html>
