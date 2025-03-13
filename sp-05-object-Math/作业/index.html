@@ -8,7 +8,7 @@
 
     <style>
         div {
-            /* height: 40px;
+            height: 40px;
             width: 40px;
             background: black;
             color: black;
@@ -24,9 +24,9 @@
             border: 2px solid gray;
         }
 
-        */ p {
-            /* padding: 10px;
-            margin: 10px; */
+      p {
+            padding: 10px;
+            margin: 10px;
         }
 
         #colorBox {
@@ -35,45 +35,11 @@
 
         }
 
-        .hero-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .hero-box {
-            position: relative;
-            text-align: center;
-        }
-
-        .hero-img {
-            width: 100px;
-            height: 100px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-img:hover {
-            transform: scale(1.1);
-        }
-
-        .hero-name {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-            display: none;
-        }
+        
     </style>
 </head>
 
 <body>
-    <div class="hero-container" id="heroList"></div>
     <script>
         /* 练习题1：点名: 
         每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
@@ -177,78 +143,22 @@
 
         /*练习题5：完成课堂随机生成颜色的案例*/
 
-        // function randomRGB(){
-        //     let num = Math.floor(Math.random()*256)
-        //     return num
-        // }
-        // let a = randomRGB()
-        // let b = randomRGB()
-        // let c = randomRGB()
+        function randomRGB(){
+            let num = Math.floor(Math.random()*256)
+            return num
+        }
+        let a = randomRGB()
+        let b = randomRGB()
+        let c = randomRGB()
 
-        // console.log(`${a},${b},${c}`);
+        console.log(`${a},${b},${c}`);
 
-        // let colorBox = document.createElement('div')
-        // colorBox.id = 'colorBox'
-        // colorBox.style.background = `rgb(${a},${b}, ${c})`
-        // document.body.appendChild(colorBox)
+        let colorBox = document.createElement('div')
+        colorBox.id = 'colorBox'
+        colorBox.style.background = `rgb(${a},${b}, ${c})`
+        document.body.appendChild(colorBox)
 
-        /* 拓展作业1 **需求：** 利用对象数组渲染英雄列表案例
-        功能1：
-        1. 利用对象数组里面的数据来渲染页面，渲染多个数据
-        2. 鼠标经过停留会显示`英雄名字`
-        */
-        let datas = [
-            { name: '司马懿', imgSrc: '/heros/01.jpg' },
-            { name: '女娲', imgSrc: '/heros/02.jpg' },
-            { name: '百里守约', imgSrc: '/heros/03.jpg' },
-            { name: '亚瑟', imgSrc: '/heros/04.jpg' },
-            { name: '虞姬', imgSrc: '/heros/05.jpg' },
-            { name: '张良', imgSrc: '/heros/06.jpg' },
-            { name: '安其拉', imgSrc: '/heros/07.jpg' },
-            { name: '李白', imgSrc: '/heros/08.jpg' },
-            { name: '阿珂', imgSrc: '/heros/09.jpg' },
-            { name: '墨子', imgSrc: '/heros/10.jpg' },
-            { name: '鲁班', imgSrc: '/heros/11.jpg' },
-            { name: '嬴政', imgSrc: '/heros/12.jpg' },
-            { name: '孙膑', imgSrc: '/heros/13.jpg' },
-            { name: '周瑜', imgSrc: '/heros/14.jpg' },
-            { name: 'XXX', imgSrc: '/heros/15.jpg' },
-            { name: 'XXX', imgSrc: '/heros/16.jpg' },
-            { name: 'XXX', imgSrc: '/heros/17.jpg' },
-            { name: 'XXX', imgSrc: '/heros/18.jpg' },
-            { name: 'XXX', imgSrc: '/heros/19.jpg' },
-            { name: 'XXX', imgSrc: '/heros/20.jpg' }
-        ]
-
-        let heroList = document.getElementById("heroList");
-
-        datas.forEach(hero => {
-            let heroBox = document.createElement("div");
-            heroBox.className = "hero-box";
-
-            let heroImg = document.createElement("img");
-            heroImg.className = "hero-img";
-            heroImg.src = hero.imgSrc;
-            heroImg.alt = hero.name;
-            heroImg.title = hero.name;
-
-            let heroName = document.createElement("div");
-            heroName.className = "hero-name";
-            heroName.innerText = hero.name;
-
-            heroBox.appendChild(heroImg);
-            heroBox.appendChild(heroName);
-            heroList.appendChild(heroBox);
-
-            // 绑定鼠标悬停事件
-            heroImg.addEventListener("mouseover", () => {
-                heroName.style.display = "block";
-            });
-
-            heroImg.addEventListener("mouseout", () => {
-                heroName.style.display = "none";
-            });
-        });
+        
     </script>
 </body>
 
