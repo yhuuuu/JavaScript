@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sp homework</title>
+
+    <style>
+        div {
+            height: 40px;
+            width: 40px;
+            background: black;
+            color: black;
+            /* 初始隐藏数字 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid gray;
+        }
+
+      p {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #colorBox {
+            height: 100px;
+            width: 100px;
+
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 练习题1：点名: 
+        每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
+         */
+        // let stuArr = ["老赵", "老李", "小传", "小黑"]
+        // let count = 1
+
+        // while (stuArr.length > 0) {
+        //     // Random generate index for selecting student
+        //     let randomIndex = Math.floor(Math.random() * stuArr.length)
+        //     const selectedStudent = stuArr[randomIndex];
+
+        //     // Display drafted student
+        //     document.write(`第${count}位抽中的学生: ${selectedStudent} <br>`)
+        //     console.log(`before delete: ${stuArr}`);
+
+        //     // Remove drafted student
+        //     stuArr.splice(randomIndex, 1)
+        //     console.log(`after: ${stuArr}`);
+
+        //     count++;
+        // }
+
+        /* 练习题2：声明对象
+        目的: 复习对象的声明
+
+        要求:
+        1. 声明一个变量per, 类型为对象类型
+        2. 该对象的属性为性别,年龄,爱好(3个)
+        3. 该对象的方法有 说话, 吃饭(2个)
+        4. 在控制台分别调用该对象的属性和方法
+        */
+        /* 练习题3: 调用对象的方法
+        目的: 复习对象的使用
+
+        要求:
+        1. 对象声明完毕后, 调用对象中的吃饭的方法
+        2. 提示: 对象中的方法本质是函数, 调用需要加()
+        3. 方法也可以传递参数的 */
+        // let per = {
+        //     gender: 'male',
+        //     age: 27,
+        //     hobby: ['swimming', 'snowboarding', 'singing'],
+        //     speak(){
+        //         console.log('I can speak');
+        //     },
+        //     eat(food) {
+        //         console.log(`I ate ${food ?? 'nothing'} today`)
+        //     }
+        // }
+        // console.log(per.gender);
+        // console.log(per.age);
+        // console.log(`Hobbies: ${per.hobby.join(',')}`);
+        // per.speak()
+        // per.eat()
+        // per.eat('apple')
+
+        /*练习题4：猜数字游戏，设定次数，最多猜8次 */
+        // let maxGuess = 8
+        // let guessCount = 1
+
+        // let randomNumber = Math.floor(Math.random() * 21)
+        // console.log(randomNumber);
+
+        // // Div box for random number
+        // let box = document.createElement('div')
+        // box.innerText = randomNumber
+
+        // while (guessCount <= maxGuess) {
+        //     let userInput = prompt(`Guess a number between 0 - 20 (Attempt ${guessCount}/${maxGuess}):`)
+        //     let userNum = Number(userInput)
+
+        //     if (isNaN(userNum) || userNum < 0 || userNum > 20) {
+        //         alert('Invalid input! Please enter a number bwtween 0 and 20.')
+        //         continue
+        //     }
+        //     if (userNum < randomNumber) {
+        //         alert(`Your number is too small. You have ${maxGuess - guessCount} guess left`)
+        //     } else if (userNum > randomNumber) {
+        //         alert(`Your number is too big. You have ${maxGuess - guessCount} guess left`)
+        //     } else {
+        //         alert('Congraulation! You won!')
+        //         guessCount = 8
+        //         break
+        //     }
+        //     guessCount++
+        // }
+        // if (guessCount > maxGuess) {
+        //    let messageBox = document.createElement("p")
+        //    messageBox.innerText = `Game Over! Click to see the number`
+        //    document.body.append(messageBox)
+        //    document.body.appendChild(box);
+
+        // }
+        // function handleClick() {
+        //     box.style.background = 'white'
+        //     box.style.color = 'black'
+        // }
+
+        // box.addEventListener('click', handleClick)
+
+        /*练习题5：完成课堂随机生成颜色的案例*/
+
+        function randomRGB(){
+            let num = Math.floor(Math.random()*256)
+            return num
+        }
+        let a = randomRGB()
+        let b = randomRGB()
+        let c = randomRGB()
+
+        console.log(`${a},${b},${c}`);
+
+        let colorBox = document.createElement('div')
+        colorBox.id = 'colorBox'
+        colorBox.style.background = `rgb(${a},${b}, ${c})`
+        document.body.appendChild(colorBox)
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumberGuessing</title>
+
+</head>
+
+<body>
+    <script>
+        /* 猜数字游戏
+            需求：程序随机生成 1~10 之间的一个数字，用户输入一个数字
+            ①：如果大于该数字，就提示，数字猜大了，继续猜
+            ②：如果小于该数字，就提示，数字猜小了，继续猜
+            ③：如果猜对了，就提示猜对了，程序结束 */
+        function getRandom(N, M) {
+            return Math.floor(Math.random() *( M - N + 1))+ N
+        }
+        let randomNum = getRandom(1, 10)
+        console.log(randomNum);
+
+        while (true) {
+            let userInput = prompt('Please guess a number between 1-10: ')
+            let userNum = Number(userInput)
+
+            if (isNaN(userNum) || userNum < 1 || userNum > 10) {
+                alert('Please enter a valid number between 1 and 10: ')
+                continue
+            }
+            if (userNum === randomNum) {
+                alert('Congratulations! You guessed the correct number!')
+                break
+            } if (userNum < randomNum) {
+                alert('Try a bigger number')
+            } else {
+                alert('Try a smaller number')
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
