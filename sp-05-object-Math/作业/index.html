@@ -8,7 +8,7 @@
 
     <style>
         div {
-            height: 40px;
+            /* height: 40px;
             width: 40px;
             background: black;
             color: black;
@@ -24,9 +24,9 @@
             border: 2px solid gray;
         }
 
-        p {
-            padding: 10px;
-            margin: 10px;
+        */ p {
+            /* padding: 10px;
+            margin: 10px; */
         }
 
         #colorBox {
@@ -34,11 +34,46 @@
             width: 100px;
 
         }
+
+        .hero-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-box {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-img:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-name {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-
+    <div class="hero-container" id="heroList"></div>
     <script>
         /* 练习题1：点名: 
         每次刷新网页运行, 在控制台 随机输出一位同学的名字 ["老赵", "老李", "小传", "小黑"]，如果输出了，则数组中删除这个名字
@@ -185,11 +220,35 @@
             { name: 'XXX', imgSrc: '/heros/20.jpg' }
         ]
 
-        for (const key in datas) {
-            let heroImg = document.createElement("img")
-            heroImg.src = datas[key].imgSrc
-            document.body.appendChild(heroImg)
-        }
+        let heroList = document.getElementById("heroList");
+
+        datas.forEach(hero => {
+            let heroBox = document.createElement("div");
+            heroBox.className = "hero-box";
+
+            let heroImg = document.createElement("img");
+            heroImg.className = "hero-img";
+            heroImg.src = hero.imgSrc;
+            heroImg.alt = hero.name;
+            heroImg.title = hero.name;
+
+            let heroName = document.createElement("div");
+            heroName.className = "hero-name";
+            heroName.innerText = hero.name;
+
+            heroBox.appendChild(heroImg);
+            heroBox.appendChild(heroName);
+            heroList.appendChild(heroBox);
+
+            // 绑定鼠标悬停事件
+            heroImg.addEventListener("mouseover", () => {
+                heroName.style.display = "block";
+            });
+
+            heroImg.addEventListener("mouseout", () => {
+                heroName.style.display = "none";
+            });
+        });
     </script>
 </body>
 
