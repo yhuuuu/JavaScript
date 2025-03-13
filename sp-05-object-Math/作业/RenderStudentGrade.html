@@ -38,16 +38,23 @@
             let tableBody = document.getElementById('tableBody')
             tableBody.innerHTML = "" //empty old data
 
-            for (let i = 0; i < data.length; i++) {
+            // for (let i = 0; i < data.length; i++) {
+            //     let tableRow = document.createElement('tr')
+            //     tableRow.innerHTML = `
+            //         
+            //     tableBody.appendChild(tableRow);
+            // }
+
+            data.forEach((item, index) => {
                 let tableRow = document.createElement('tr')
                 tableRow.innerHTML = `
-                    <td>${i + 1}</td>
-                    <td>${data[i].subject}</td>
-                    <td>${data[i].score}</td>
-                    <td><button class="delete-btn" onclick="deleteRow(${i})">Delete</button></td>
-               `
+                     <td>${index + 1}</td>
+                    <td>${item.subject}</td>
+                    <td>${item.score}</td>
+                    <td><button class="delete-btn" onclick="deleteRow(${index})">Delete</button></td>  
+           `
                 tableBody.appendChild(tableRow);
-            }
+            })
         }
 
         function deleteRow(index) {
