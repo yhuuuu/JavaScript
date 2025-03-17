@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年会抽奖案例</title>
+    <style>
+        .wrapper {
+            width: 840px;
+            height: 420px;
+            background: url(../images/bg01.jpg) no-repeat center / cover;
+            padding: 100px 250px;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <strong>传智教育年会抽奖</strong>
+        <h1>一等奖：<span id="one">???</span></h1>
+        <h3>二等奖：<span id="two">???</span></h3>
+        <h5>三等奖：<span id="three">???</span></h5>
+    </div>
+    <script>
+        const personArr = ['Jay', 'Andy', 'Cooper', 'Pepper', 'DJ']
+
+        const firstPlace = document.querySelector('#one')
+        const secondPlace = document.querySelector('#two')
+        const thirdPlace = document.querySelector('#three')
+
+        for (let i = 0; i <= 2; i++) {
+            // select random person
+            const randomPerson = Math.floor(Math.random() * personArr.length)
+            //console.log(randomPerson)
+            // fist winner in 1st round
+            if (i === 0) {
+                one.innerText = personArr[randomPerson]
+            }
+            // second winner in 2nd round
+            if (i === 1) {
+                two.innerText = personArr[randomPerson]
+            }
+            // third winner in 3rd round
+            if (i === 2) {
+                three.innerText = personArr[randomPerson]
+            }
+            personArr.splice(randomPerson, 1)
+            console.log(`After Spilce: ${personArr}`);
+        }
+
+    </script>
+</body>
+
+</html>
