@@ -31,23 +31,19 @@
         const secondPlace = document.querySelector('#two')
         const thirdPlace = document.querySelector('#three')
 
-        for (let i = 0; i <= 2; i++) {
+        for (let i = 0; i < 3; i++) {
             // select random person
-            const randomPerson = Math.floor(Math.random() * personArr.length)
-            //console.log(randomPerson)
-            // fist winner in 1st round
+            const randomIndex = Math.floor(Math.random() * personArr.length)
+            const winner = personArr[randomIndex]
+
             if (i === 0) {
-                one.innerText = personArr[randomPerson]
+                firstPlace.innerText = winner
+            } else if (i === 1) {
+                secondPlace.innerText = winner
+            } else {
+                thirdPlace.innerText = winner
             }
-            // second winner in 2nd round
-            if (i === 1) {
-                two.innerText = personArr[randomPerson]
-            }
-            // third winner in 3rd round
-            if (i === 2) {
-                three.innerText = personArr[randomPerson]
-            }
-            personArr.splice(randomPerson, 1)
+            personArr.splice(randomIndex, 1) //Remove the selected person
             console.log(`After Spilce: ${personArr}`);
         }
 
