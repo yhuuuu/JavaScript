@@ -98,7 +98,7 @@
         <div class="slider-footer">
             <p>对人类来说会不会太超前了？</p>
             <ul class="slider-indicator">
-                <li class="active"></li>
+                <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -126,19 +126,30 @@
             { url: '../images/slider08.jpg', title: '谁不想和小猫咪贴贴呢！', color: 'rgb(99, 72, 114)' },
         ]
 
-        function randomPicture(N, M) {
-            let randomIndex = Math.floor(Math.random() * (M - N + 1) + N)
-            console.log(randomIndex);
-            return randomIndex
+        // 1. Generate random index
+        function randomIndex() {
+            return Math.floor(Math.random() * sliderData.length)
         }
-        let selectedIndex = randomPicture(1, sliderData.length-1)
-        let carouselPic = document.querySelector('img')
-        let carouselTitle = document.querySelector('p')
-        let carouselfooter = document.querySelector('.slider-footer')
+        const selectedIndex = randomIndex()
+        console.log(selectedIndex);
 
-        carouselPic.src = sliderData[selectedIndex].url
+        // 2.Select Dom elements
+        const carouselImg = document.querySelector('.slider-wrapper img')
+        const carouselTitle = document.querySelector('.slider-footer p')
+        const carouselfooter = document.querySelector('.slider-footer')
+
+        
+
+        // 2.change carousel title
         carouselTitle.innerText = sliderData[selectedIndex].title
+        carouselImg.src = sliderData[selectedIndex].url
+        // 3.change carousel footer background color
         carouselfooter.style.backgroundColor = sliderData[selectedIndex].color
+
+        // 4. change indicator to active class
+        const li = document.querySelector(`.slider-indicator li:nth-child(${selectedIndex + 1})`)
+        li.classList.add('active')
+
 
 
 
