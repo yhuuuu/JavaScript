@@ -138,8 +138,6 @@
         const carouselTitle = document.querySelector('.slider-footer p')
         const carouselfooter = document.querySelector('.slider-footer')
 
-        
-
         // 2.change carousel title
         carouselTitle.innerText = sliderData[selectedIndex].title
         carouselImg.src = sliderData[selectedIndex].url
@@ -149,9 +147,6 @@
         // 4. change indicator to active class
         const li = document.querySelector(`.slider-indicator li:nth-child(${selectedIndex + 1})`)
         li.classList.add('active')
-
-
-
 
     </script>
 </body>
