@@ -58,42 +58,51 @@
         // 数据数组
         const arr = ['马超', '黄忠', '赵云', '关羽', '张飞']
 
+        // Global variables
         let intervalId
-        let nameIntervalTime = 100
         let removeIndex
+        let isRunning = false;
+        const nameIntervalTime = 35
 
+        // Select dom elements
         const nameBox = document.querySelector('.box .qs')
         const startBtn = document.querySelector('.btns .start')
         const stopBtn = document.querySelector('.btns .end')
 
+        // Start 
         function startSelectName() {
-            if (arr.length === 0) {
-                nameBox.innerHTML = '点名完毕'
-                return
-            }
+            if (isRunning || arr.length === 0) return //prevent start mutiple setInterval
+            isRunning = true
+            stopBtn.disabled = false
 
             intervalId = setInterval(() => {
                 let randomIndex = Math.floor(Math.random() * arr.length)
                 removeIndex = randomIndex
                 let randomPpl = arr[randomIndex]
                 nameBox.innerHTML = randomPpl
-
-
             }, nameIntervalTime);
         }
 
-
+        // End 
         function endSelectName() {
+            if (!isRunning) return // Prevent end before clicking start
             clearInterval(intervalId)
-            arr.splice(removeIndex, 1)
-            console.log(`nrwarr`, arr);
-        }
+            isRunning = false
 
+            if (arr.length > 0) {
+                arr.splice(removeIndex, 1)
+            }
+
+            if (arr.length === 0) {
+                nameBox.innerHTML = '点名完毕'
+                startBtn.disabled = true
+                stopBtn.disabled = true
+                return
+            }
+        }
 
         startBtn.addEventListener('click', startSelectName)
         stopBtn.addEventListener('click', endSelectName)
-
-
 
     </script>
 </body>
