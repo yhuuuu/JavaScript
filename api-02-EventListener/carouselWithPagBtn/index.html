@@ -178,6 +178,12 @@
     }
 
     function changeSlide(direction) {
+      /* modulo operation
+      *(7 + 1 + 8) % 8 = 16 % 8 = 0  
+      *(2 + 1 + 8) % 8 = 11 % 8 = 3 
+      *(3 + 1 + 8) % 8 = 12 % 8 = 4
+      *(0 - 1 + 8) % 8 =  7 % 8 = 0
+      */
       currentIndex = (currentIndex + direction + sliderData.length) % sliderData.length
       updateSlider()
     }
@@ -187,7 +193,19 @@
     prevBtn.addEventListener('click', () => changeSlide(-1))
 
 
+    //autoplay 
+    setInterval(() => {
+      changeSlide(1)
+    }, 2000);
 
+    // indicator button navigation feature
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click',()=>{
+        currentIndex = index
+        updateSlider()
+      })
+
+    })
 
 
   </script>
