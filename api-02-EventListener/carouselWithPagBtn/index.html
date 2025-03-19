@@ -131,7 +131,8 @@
     const img = document.querySelector('.slider-wrapper img')
     const p = document.querySelector('.slider-footer p')
     const footer = document.querySelector('.slider-footer')
-    const indicators = document.querySelectorAll('.slider-indicator li');
+    const indicators = document.querySelectorAll('.slider-indicator li')
+    const slider = document.querySelector('.slider')
 
 
     // Get button elements
@@ -194,18 +195,25 @@
 
 
     //autoplay 
-    setInterval(() => {
+    let autoPlaySlider = setInterval(() => {
       changeSlide(1)
-    }, 2000);
+    }, 1000);
 
     // indicator button navigation feature
     indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click',()=>{
+      indicator.addEventListener('click', () => {
         currentIndex = index
         updateSlider()
       })
-
     })
+
+    // Stop auto-playing when mouse enter the slider 
+    slider.addEventListener('mouseenter', () => clearInterval(autoPlaySlider))
+    // Restart auto-playing when mouse leaves the slider
+    slider.addEventListener('mouseleave', () => {
+      autoPlaySlider = setInterval(() => changeSlide(1), 1000);
+    });
+
 
 
   </script>
