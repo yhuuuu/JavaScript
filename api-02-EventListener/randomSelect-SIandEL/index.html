@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .box {
+            width: 600px;
+            margin: 50px auto;
+            display: flex;
+            font-size: 25px;
+            line-height: 40px;
+        }
+
+        .qs {
+
+            width: 450px;
+            height: 40px;
+            color: red;
+
+        }
+
+        .btns {
+            text-align: center;
+        }
+
+        .btns button {
+            width: 120px;
+            height: 35px;
+            margin: 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>随机点名</h2>
+    <div class="box">
+        <span>名字是：</span>
+        <div class="qs">这里显示名字</div>
+    </div>
+    <div class="btns">
+        <button class="start">开始</button>
+        <button class="end">结束</button>
+    </div>
+
+    <script>
+        // 数据数组
+        const arr = ['马超', '黄忠', '赵云', '关羽', '张飞']
+
+        let intervalId
+        let nameIntervalTime = 100
+        let removeIndex
+
+        const nameBox = document.querySelector('.box .qs')
+        const startBtn = document.querySelector('.btns .start')
+        const stopBtn = document.querySelector('.btns .end')
+
+        function startSelectName() {
+            if (arr.length === 0) {
+                nameBox.innerHTML = '点名完毕'
+                return
+            }
+
+            intervalId = setInterval(() => {
+                let randomIndex = Math.floor(Math.random() * arr.length)
+                removeIndex = randomIndex
+                let randomPpl = arr[randomIndex]
+                nameBox.innerHTML = randomPpl
+
+
+            }, nameIntervalTime);
+        }
+
+
+        function endSelectName() {
+            clearInterval(intervalId)
+            arr.splice(removeIndex, 1)
+            console.log(`nrwarr`, arr);
+        }
+
+
+        startBtn.addEventListener('click', startSelectName)
+        stopBtn.addEventListener('click', endSelectName)
+
+
+
+    </script>
+</body>
+
+</html>
