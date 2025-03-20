@@ -121,6 +121,9 @@
     <script>
         const tx = document.querySelector('#tx')
         const total = document.querySelector('.total')
+        const eachCommon = document.querySelector('.item')
+        const commonText = document.querySelector('.text')
+        
 
         tx.addEventListener('focus', () => {
             total.style.opacity = 1
@@ -130,7 +133,16 @@
         })
         tx.addEventListener('input', () => {
             total.innerHTML= `${tx.value.length}/200字`
-    
+        })
+        tx.addEventListener('keyup',(e)=>{
+            if(e.code === 'Enter'){
+                if(tx.value.trim() !== ''){
+                    eachCommon.style.display= 'block' 
+                    commonText.innerHTML = tx.value
+                }
+                tx.value = ''
+                total.innerHTML = '0/200字'
+            }
         })
     </script>
 </body>
