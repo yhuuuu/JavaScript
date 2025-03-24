@@ -94,30 +94,31 @@
         const tabs = document.querySelectorAll('.tab-nav a')
    
         // add event listener for each tab
-        for (let i = 0; i < tabs.length; i++) {
+        // for (let i = 0; i < tabs.length; i++) {
            
-            tabs[i].addEventListener('mouseenter', function(){
-                // Remove active class from pervious tab
-                document.querySelector('.tab-nav .active').classList.remove('active')
-                // Add active class to currnt tab
-                this.classList.add('active')
-
-                //Detail diaplay base on selected tab
-                document.querySelector('.tab-content .active').classList.remove('active')
-                document.querySelector(`.tab-content .item:nth-child(${i+1})`).classList.add('active')                
-            });
-        }
-
-        // tabs.forEach((tab, index) => {
-        //     tabs[index].addEventListener('mouseenter', () => {
-        //         console.log('mouse enter');
-        //         //remove tab with active
+        //     tabs[i].addEventListener('mouseenter', function(){
+        //         // Remove active class from pervious tab
         //         document.querySelector('.tab-nav .active').classList.remove('active')
-        //         tab.classList.add('active')
+        //         // Add active class to currnt tab
+        //         this.classList.add('active')
 
-               
+        //         //Detail diaplay base on selected tab
+        //         document.querySelector('.tab-content .active').classList.remove('active')
+        //         document.querySelector(`.tab-content .item:nth-child(${i+1})`).classList.add('active')                
         //     });
-        // })
+        // }
+
+        tabs.forEach((tab, index) => {
+            tabs[index].addEventListener('mouseenter', () => {
+                console.log('mouse enter');
+                //remove tab with active
+                document.querySelector('.tab-nav .active').classList.remove('active')
+                tab.classList.add('active')
+                
+                document.querySelector('.tab-content .active').classList.remove('active')
+                document.querySelector(`.tab-content .item:nth-child(${index+1})`).classList.add('active')    
+            });
+        })
     </script>
 </body>
 
