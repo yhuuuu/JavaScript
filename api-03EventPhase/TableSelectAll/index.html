@@ -79,25 +79,34 @@
         // Select checkAll checkbox
         const checkAll = document.querySelector('#checkAll')
         // Select all small checkboxes
-        const checkboxs = document.querySelectorAll('.ck')
+        const checkboxes = document.querySelectorAll('.ck')
 
         // Register click evetnt to the checkAll checkbox
         checkAll.addEventListener('click', function () {
-            //Make each small checkbox status equal to the big checkbox status
-            //When the parent is checked, all the child checked
-            for (let i = 0; i < checkboxs.length; i++) {
-                checkboxs[i].checked = this.checked
-            }
+            // for (let i = 0; i < checkboxes.length; i++) {
+            //     checkboxes[i].checked = this.checked
+            // }
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = this.checked
+            })
         })
 
         // Individual checkboxes
-        for (let i = 0; i < checkboxs.length; i++) {
-            checkboxs[i].addEventListener('click', function () {
-                // CheckAll btn apply when number of checked checkbox is equal to the toatl checkbox number 
-                // T/F = T/F
-                checkAll.checked = document.querySelectorAll('.ck:checked').length === checkboxs.length
+        // for (let i = 0; i < checkboxes.length; i++) {
+        //     checkboxes[i].addEventListener('click', function () {
+        //         // CheckAll btn apply when number of checked checkbox is equal to the toatl checkbox number 
+        //         // T/F = T/F
+        //         checkAll.checked = document.querySelectorAll('.ck:checked').length === checkboxes.length
+        //     })
+        // }
+
+        // Register click event for each individual checkbox
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('click', function () {
+                // Update checkAll status based on individual checkboxes
+                checkAll.checked = document.querySelectorAll('.ck:checked').length === checkboxes.length
             })
-        }
+        })
     </script>
 </body>
 
