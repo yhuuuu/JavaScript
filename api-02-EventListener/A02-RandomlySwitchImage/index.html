@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>Switch Image</button>
+
+    <div class="image box">
+        <img class="image" src="./images/01.gif" alt="">
+    </div>
+
+    <script>
+        const images = [
+            {imageNum: 1,imgSrc:'./images/1.jpg'},
+            {imageNum: 2,imgSrc:'./images/2.jpg'},
+            {imageNum: 3,imgSrc:'./images/3.jpg'},
+            {imageNum: 4,imgSrc:'./images/4.jpg'},
+            {imageNum: 5,imgSrc:'./images/5.jpg'},
+            {imageNum: 6,imgSrc:'./images/6.jpg'},
+            {imageNum: 7,imgSrc:'./images/01.gif'},
+            {imageNum: 8,imgSrc:'./images/02.gif'},
+        ]
+        //get image element
+        
+        const switchBtn = document.querySelector('button')
+        switchBtn.addEventListener('click', function(){
+
+            const image = document.querySelector('img')
+            let i = Math.floor(Math.random() * images.length)
+            console.log(i);
+           
+             image.src = `${images[i].imgSrc}`
+             
+        })
+        
+    </script>
+</body>
+</html>
