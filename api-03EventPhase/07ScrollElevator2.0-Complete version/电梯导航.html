@@ -1216,7 +1216,7 @@
   </div>
 
   <script>
-    // Page scrolling and elevator display block
+    // Handle elevator visibility based on scroll position 
     (function () {
       const elevator = document.querySelector('.xtx-elevator')
       window.addEventListener('scroll', function () {
@@ -1226,52 +1226,54 @@
         // }else{
         //   elevator.style.opacity = 0
         // }
+        // Toggle elevator visibility based on scroll position 
         elevator.style.opacity = n >= 300 ? 1 : 0
       })
 
       const backTop = document.querySelector('#backTop')
+      // Scroll to the top when the "Back to Top" button is clicked
       backTop.addEventListener('click', function () {
         document.documentElement.scrollTop = 0
-        // window.scrollTo(0,0)
       })
     })();
 
+
     (function () {
       const list = document.querySelector('.xtx-elevator-list')
+
+      // Handle elevator tab click events
       list.addEventListener('click', function (e) {
-
-        // initial state is without active class, therefore cannot do classlist.remove('active')
+        // Check if the clicked element is a valid elevator link
         if (e.target.tagName === 'A' && e.target.dataset.name) {
-
           const activeTab = document.querySelector('.xtx-elevator-list .active')
-          console.log('activeTab',activeTab);
-
+          // Remove the active class from the currently active tab
           if (activeTab) {
             activeTab.classList.remove('active')
           }
-          console.log('e: ',e);
+          // Add active class to the clicked tab
           e.target.classList.add('active')
 
-
-          const elelctedTabDetail_offsetTop = document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop
-          document.documentElement.scrollTop = elelctedTabDetail_offsetTop
+          // Scroll to the corresponding section
+          const selelctedTab_offsetTop = document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop + 1
+          document.documentElement.scrollTop = selelctedTab_offsetTop
         }
       })
-
-       window.addEventListener('scroll', function () {
+      // Handle elevator tab activation based on scroll position 
+      window.addEventListener('scroll', function () {
+        // Remove the active state from all tabs before setting the new one
         const activeTab = document.querySelector('.xtx-elevator-list .active')
         if (activeTab) {
           activeTab.classList.remove('active')
         }
 
-        // select elevator tab based on detail location 
-
+        // Determine which  tab to highlight based on the current scroll positon 
         const new_section = document.querySelector('.xtx_goods_new')
         const popular_section = document.querySelector('.xtx_goods_popular')
         const brand_section = document.querySelector('.xtx_goods_brand')
         const topic_section = document.querySelector('.xtx_goods_topic')
         const pgScrollTop = document.documentElement.scrollTop
 
+        // Highlight the corresponding elevator tab based on the  section in view
         if (pgScrollTop >= new_section.offsetTop && pgScrollTop < popular_section.offsetTop) {
           document.querySelector('[data-name=new]').classList.add('active')
         } else if (pgScrollTop >= popular_section.offsetTop && pgScrollTop < brand_section.offsetTop) {
@@ -1286,10 +1288,10 @@
     })
       ()
 
-   
-     
 
-</script>
+
+
+  </script>
 </body>
 
 </html>
