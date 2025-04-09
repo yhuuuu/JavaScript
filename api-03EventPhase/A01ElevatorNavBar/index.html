@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .aside {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .item {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .contents {
+            width: 660px;
+            margin: 400px auto;
+        }
+
+        .content {
+            height: 300px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .content-home {
+            background-color: red;
+        }
+
+        .content-about {
+            background-color: blue;
+        }
+
+        .content-project {
+            background-color: orange;
+        }
+
+        .content-contact {
+            background-color: yellowgreen;
+        }
+
+        .header span {
+            font-size: 50px;
+        }
+
+        .header {
+            margin: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span>Welcome to my website</span>
+    </div>
+
+    <div class="aside">
+        <div class="item ">
+            <a href="javascript:;" data-name="home">Home</a>
+        </div>
+        <div class="item">
+            <a href="javascript:;" data-name="about">About</a>
+        </div>
+        <div class="item">
+            <a href="javascript:;" data-name="project">Projects</a>
+        </div>
+        <div class="item">
+            <a href="javascript:;" data-name="contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="contents">
+        <div class="content content-home">Home</div>
+        <div class="content content-about">About</div>
+        <div class="content content-project">Projects</div>
+        <div class="content content-contact">Contact</div>
+    </div>
+    <script>
+        // Event handle for all aside tab
+        const tabs = document.querySelector('.aside')
+        tabs.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+           
+                // Get the content's position relative to the top of the document
+                const selectedContent_offsetTop = document.querySelector(`.content-${e.target.dataset.name}`).offsetTop;
+
+                document.documentElement.scrollTop = selectedContent_offsetTop 
+                
+                // Prevent default anchor behavior
+                e.preventDefault();
+            }
+        })
+    </script>
+</body>
+
+</html>
