@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="">
+    <script defer src="script.js"></script>
+</head>
+
+<body class="section">
+    <div class="container">
+        <h1 class="title">User Auth Demo</h1>
+
+  <!-- switch tab
+        <div class="tab-nav">
+            <div>
+                <h2>Register</h2>
+            </div>
+            <div>
+                <h2>Sign in</h2>
+            </div>
+        </div>
+     -->
+        <div class="columns">
+            <!-- Register -->
+            <div class="column box">
+              <h2 class="subtitle">Register</h2>
+              <form id="registerForm">
+                <div class="field">
+                  <label class="label">Username</label>
+                  <input class="input" type="text" id="regUsername" required>
+                </div>
+                <div class="field">
+                  <label class="label">Email</label>
+                  <input class="input" type="email" id="regEmail" required>
+                </div>
+                <div class="field">
+                  <label class="label">Password</label>
+                  <input class="input" type="password" id="regPassword" required>
+                </div>
+                <button class="button is-primary" type="submit">Register</button>
+                <p id="registerMessage" class="help mt-2"></p>
+              </form>
+            </div>
+      
+            <!-- Login -->
+            <div class="column box">
+              <h2 class="subtitle">Login</h2>
+              <form id="loginForm">
+                <div class="field">
+                  <label class="label">Username</label>
+                  <input class="input" type="text" id="loginUsername" required>
+                </div>
+                <div class="field">
+                  <label class="label">Password</label>
+                  <input class="input" type="password" id="loginPassword" required>
+                </div>
+                <button class="button is-link" type="submit">Login</button>
+                <p id="loginMessage" class="help mt-2"></p>
+              </form>
+            </div>
+          </div>
+
+    </div>
+</body>
+</html>
