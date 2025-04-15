@@ -29,7 +29,7 @@
               <form id="registerForm">
                 <div class="field">
                   <label class="label">Username</label>
-                  <input class="input" type="text" id="regUsername" required>
+                  <input class="input" type="text" id="regUsername" autocomplete="" required>
                 </div>
                 <div class="field">
                   <label class="label">Email</label>
@@ -38,6 +38,10 @@
                 <div class="field">
                   <label class="label">Password</label>
                   <input class="input" type="password" id="regPassword" required>
+                </div>
+                <div class="field">
+                  <label class="label">Confirm Password</label>
+                  <input class="input" type="password" id="regConfirmPassword" required>
                 </div>
                 <button class="button is-primary" type="submit">Register</button>
                 <p id="registerMessage" class="help mt-2"></p>
