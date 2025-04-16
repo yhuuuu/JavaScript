@@ -3,5 +3,10 @@
     "username": "899ddd",
     "email": "dfgs@gmail.com",
     "password": "$2b$10$78l4ftT.vf4MElrUtWROKe0n4jYD1tzAdmOcl.VTjl3mLj7fphlFS"
+  },
+  {
+    "username": "abc123",
+    "email": "abc123@gmaial.com",
+    "password": "$2b$10$jkPlu1dGAFXY498jWvweSOKRgn9CHslXLbXgL9l/Tla3XlpMooHnm"
   }
 ]

@@ -5,6 +5,11 @@ const regPassword = document.getElementById('regPassword')
 const regConfirmPassword = document.getElementById('regConfirmPassword')
 const registerMessage = document.getElementById('registerMessage')
 
+
+const loginForm = document.getElementById('loginForm')
+const loginUsername = document.getElementById('loginUsername')
+const loginPassword = document.getElementById('loginPassword')
+
 // Username regular expression 
 regUsername.addEventListener('input', verifyUname)
 function verifyUname(){
@@ -97,6 +102,35 @@ try{
     }
 
 })
+
+
+  
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  loginMessage.textContent = '';
+
+  if (!loginUsername.value || !loginPassword.value) {
+    loginMessage.textContent = 'Please fill in both fields';
+    return;
+  }
+
+  try {
+    const res = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: loginUsername.value,
+        password: loginPassword.value,
+      }),
+    });
+
+    const data = await res.json();
+    loginMessage.textContent = data.message;
+    
+  } catch (err) {
+    loginMessage.textContent = 'Server error';
+  }
+});
 
 
 

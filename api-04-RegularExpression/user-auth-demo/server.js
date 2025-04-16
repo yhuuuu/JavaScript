@@ -69,19 +69,19 @@ app.post('/register', async (req, res) => {
 });
 
 // Login route
-// app.post('/login', async (req, res) => {
-//   const { username, password } = req.body;
-//   const users = readUsers();
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const users = readUsers();
 
-//   const user = users.find(u => u.username === username);
-//   if (!user) return res.status(400).json({ message: 'User not found' });
+  const user = users.find(u => u.username === username);
+  if (!user) return res.status(400).json({ message: 'User not found' });
 
-//   const match = await bcrypt.compare(password, user.password);
-//   if (!match) return res.status(401).json({ message: 'Invalid password' });
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) return res.status(401).json({ message: 'Invalid password' });
 
-//   res.json({ message: 'Login successful' });
-// });
+  res.json({ message: 'Login successful' });
+});
 
-// app.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
