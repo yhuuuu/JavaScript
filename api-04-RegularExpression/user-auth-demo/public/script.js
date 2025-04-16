@@ -52,15 +52,50 @@ registerMessage.textContent = ''
 return true
     
 }
-registerForm.addEventListener('submit',function(e){
+registerForm.addEventListener('submit',async function(e){
 e.preventDefault();
 registerMessage.textContent = ''
 
-if(!verifyUname) return
-if(!verifyEmail) return
-if(!verifyPwd) return
-if(!confirmPwd) return
-console.log('sumbited');
+if(!verifyUname()) return
+if(!verifyEmail()) return
+if(!verifyPwd()) return
+if(!confirmPwd()) return
+
+console.log('sumbited clicked');
+
+//Collect data
+const data = {
+    username: regUsername.value,
+    email:regEmail.value,
+    password: regPassword.value
+}
+
+try{
+    const res = await fetch('http://localhost:3000/register',{
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    const result = await res.json()
+
+    if (res.ok) {
+        //success
+        registerMessage.textContent = '🎉 注册成功！';
+  
+        // 清空输入框
+        regUsername.value = '';
+        regEmail.value = '';
+        regPassword.value = '';
+        regConfirmPassword.value = '';
+      } else {
+        //fail
+        registerMessage.textContent = `❌ ${result.message}`;
+      }
+    } catch (error) {
+      registerMessage.textContent = '🚨 网络错误，请稍后再试';
+      console.error(error);
+    }
+
 })
 
 
