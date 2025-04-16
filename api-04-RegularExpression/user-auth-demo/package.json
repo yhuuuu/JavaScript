@@ -1,0 +1,19 @@
+{
+  "name": "user-auth-demo",
+  "version": "1.0.0",
+  "description": "接下来我会提供以下文件内容： ✅ users.json（初始空数组）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "keywords": []
+}
