@@ -173,11 +173,10 @@
         // Call the render function with goodsList data
         render(goodsList);
 
-        //2. Filter item within price catalog
+        //2. Filter items within the price range 
         document.querySelector('.filter').addEventListener('click', e => {
             const { tagName, dataset } = e.target
             if (tagName === 'A') {
-
                 let arr = goodsList
                 if (dataset.index === '1') {
                     arr = goodsList.filter(item =>  item.price > 0 && item.price <= 100)
@@ -188,7 +187,6 @@
                 }
                 render(arr)
             }
-            
         })
 
     </script>
