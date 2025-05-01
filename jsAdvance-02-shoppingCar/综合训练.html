@@ -151,8 +151,9 @@
     // map each shopping car object and apply to item div
     document.querySelector('.list').innerHTML = goodsList.map(item => {
       // Decontrusctiong each object
-      const {name,price,picture,count,spec,gift} = item
+      const { name, price, picture, count, spec, gift } = item
       const text = Object.values(spec).join('/')
+      const subTotal = ((price * 100 * count) / 100).toFixed(2)
       // const giftText = 
       const str = gift ? gift.split(',').map(item => `<span class="tag">【赠品】${item}</span>`).join('') : ''
 
@@ -163,12 +164,13 @@
         <p class="spec">${text} </p>
         <p class="price">${price.toFixed(2)}</p>
         <p class="count">x${count}</p>
-        <p class="sub-total">579.80</p>
+        <p class="sub-total">${subTotal}</p>
       </div> `
     }).join('')
 
-
-
+    const total = goodsList.reduce((prev, item)=> prev + (item.price *100 * item.count)/100,0)
+    // console.log(total);
+    document.querySelector('.amount').innerHTML = `${total.toFixed(2)}`
   </script>
 </body>
 
