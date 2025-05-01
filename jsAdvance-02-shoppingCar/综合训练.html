@@ -148,6 +148,21 @@
       }
     ]
 
+    // map each shopping car object and apply to item div
+    document.querySelector('.list').innerHTML = goodsList.map(item => {
+      // Decontrusctiong each object
+      const {name,price,picture,count} = item
+      return `<div class="item">
+        <img src="${picture}">
+        <p class="name">${name} <span class="tag">【赠品】10优惠券</span></p>
+        <p class="spec">白色/10寸</p>
+        <p class="price">${price.toFixed(2)}</p>
+        <p class="count">x${count}</p>
+        <p class="sub-total">579.80</p>
+      </div> `
+    }).join('')
+
+
 
   </script>
 </body>
