@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-max-min-sum</title>
+</head>
+
+<body>
+    <script>
+        const arr = new Array(1, 2, 3)
+        // const arr = [1,2,3]
+
+        Array.prototype.max = function () {
+            return Math.max(...this)
+        }
+        Array.prototype.min = function () {
+            return Math.min(...this)
+        }
+        Array.prototype.sum = function () {
+            return this.reduce((prev, item) => prev + item, 0)
+        }
+
+        const maxNum = arr.max()
+        const minNum = arr.min()
+        const sum = arr.sum()
+
+
+        console.log(`Max num:`, maxNum);
+        console.log(`Min num:`, minNum);
+        console.log(`Sum:`, sum);
+
+    </script>
+</body>
+
+</html>
