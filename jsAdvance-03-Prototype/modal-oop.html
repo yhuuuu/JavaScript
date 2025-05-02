@@ -88,8 +88,27 @@
             `
             console.log(this.modalBox);
         }
-        new Modal('温馨提示','您没有删除权限操作')
-        new Modal('友情提示','您还没有登录')
+
+        // 2. Share function for Modal constructor function 
+        Modal.prototype.open = function () {
+            // 2.1 Add the modalBox in the page body
+            document.body.append(this.modalBox)
+
+        }
+
+
+        // 3. On button click: create instance, pass parameters, and call open()     
+        document.querySelector(`#delete`).addEventListener('click', () => {
+            const del = new Modal('温馨提示', '您没有删除权限操作')
+            del.open()
+        })
+        document.querySelector(`#login`).addEventListener('click', () => {
+            const login = new Modal('友情提示', '您还没有注册')
+            login.open()
+        })
+
+
+
     </script>
 </body>
 
