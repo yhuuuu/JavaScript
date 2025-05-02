@@ -66,6 +66,7 @@
 <body>
     <button id="delete">删除</button>
     <button id="login">登录</button>
+    <button id="add">新增</button>
 
     <!-- <div class="modal">
     <div class="header">温馨提示 <i>x</i></div>
@@ -91,6 +92,9 @@
 
         // 2. Share function for Modal constructor function 
         Modal.prototype.open = function () {
+            const box = document.querySelector('.modal')
+            //if box exist, remove the perviouse box, 
+            box && box.remove()
             // 2.1 Add the modalBox in the page body
             document.body.append(this.modalBox)
 
@@ -116,6 +120,12 @@
             const login = new Modal('友情提示', '您还没有注册')
             login.open()
         })
+
+        document.querySelector(`#add`).addEventListener('click', () => {
+            const add = new Modal('友情提示', '您还没有新增权限')
+            add.open()
+        })
+
 
 
 
