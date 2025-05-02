@@ -94,6 +94,16 @@
             // 2.1 Add the modalBox in the page body
             document.body.append(this.modalBox)
 
+            // add eventListener for close btn when modalBox is open 
+
+            this.modalBox.querySelector('i').addEventListener('click', () => {
+                this.close() 
+            })
+
+        }
+
+        Modal.prototype.close = function () {
+            this.modalBox.remove()
         }
 
 
